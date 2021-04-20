@@ -1,6 +1,6 @@
 import React from "react";
 import TickIcon from "../../../../src/img/tick.png";
-import "./UploadImage.css";
+import "../../../styles/UploadImage.css";
 
 import { toast } from "react-toastify";
 

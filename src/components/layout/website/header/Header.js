@@ -13,7 +13,7 @@ import LoginIcon from "../../../../img/images/login-icon.png";
 import { getPlanners } from "../../../../actions/plannerActions";
 import { getVendors } from "../../../../actions/vendorActions";
 
-import "./Header.css";
+import "../../../../styles/Header.css";
 import { getTranslatedLabels } from "../../../../actions/common";
 
 class Header extends Component {

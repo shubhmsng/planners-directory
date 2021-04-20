@@ -51,8 +51,15 @@ export const getAdminData = () => dispatch => {
   axios
     .get("/api/admin")
     .then(res => {
-      console.log(res);
-      dispatch({ type: GET_ADMIN_DATA, payload: res.data });
+      let data = {...res.data};
+      data.aboutUs = Object.keys(res.data).length > 0 ? res.data.aboutUs.replace(/\\"/g, '"') : "";
+      data.terms = Object.keys(res.data).length > 0 ? res.data.terms.replace(/\\"/g, '"') : "";
+      data.pp = Object.keys(res.data).length > 0 ? res.data.pp.replace(/\\"/g, '"') : "";
+      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/\\n/g, ""): "";
+      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/\\/g, ""): "";
+      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/p/g, ""): "";
+      console.log(data);
+      dispatch({ type: GET_ADMIN_DATA, payload: data });
       dispatch(getCateringOptions(res.data.catering));
       dispatch(getCategoriesOptions(res.data.categories));
       dispatch(getEventTypeOptions(res.data.eventTypes));

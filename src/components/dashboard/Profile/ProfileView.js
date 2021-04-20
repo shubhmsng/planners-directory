@@ -8,7 +8,6 @@ import classnames from "classnames";
 import ReactSelect from "react-select";
 
 import Popup from "reactjs-popup";
-import { limitCategories } from "./utils/limit";
 
 const ProfileView = ({
   data,

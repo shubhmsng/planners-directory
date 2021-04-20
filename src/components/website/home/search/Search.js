@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 // import "../Home1.css";
-import "../Home.css";
+import "../../../../styles/Home.css";
 
 class Search extends Component {
   state = {
@@ -51,14 +51,14 @@ class Search extends Component {
             <button
               id="planner"
               onClick={this.handleClick}
-              className="btn btn-primary yellow-style"
+              className="btn btn-primary yellow-style text-secondary"
             >
               <span>⌕</span> {t.planner}{" "}
             </button>
             <button
               id="vendor"
               onClick={this.handleClick}
-              className="btn btn-primary blue-style"
+              className="btn btn-primary blue-style text-secondary"
             >
               <span>⌕</span> {t.vendor}
             </button>

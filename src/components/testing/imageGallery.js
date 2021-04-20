@@ -3,7 +3,8 @@ import ImageGallery from "react-image-gallery";
 import Modal from "react-modal";
 
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
-import "./images-gallery.css";
+import "../../styles/image-gallery.css";
+
 const images = [
   {
     original: "https://picsum.photos/id/1018/1000/600/",

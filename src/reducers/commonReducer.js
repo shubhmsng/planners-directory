@@ -1,4 +1,3 @@
-import paginate from "jw-paginate";
 import {
   LOADING,
   SET_LOADING_FALSE,

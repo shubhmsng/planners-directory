@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Link, withRouter } from "react-router-dom";
 import { getAdminImages } from "../../../../actions/adminActions";
-import SidebarLink from "./Resuable/SidebarLink";
+import SidebarLink from "./Reusable/SidebarLink";
 import Logo from "../../../../img/logo-dark.png";
 import { ReactComponent as Icon1 } from "../../../../img/icon-1.svg";
 import { ReactComponent as Icon2 } from "../../../../img/icon-2.svg";

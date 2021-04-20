@@ -27,7 +27,7 @@ const ServiceItem = ({
           />
           <h6 className="text-muted m-t-20">
             <b>{t.description}</b>
-            <div class="float-right">
+            <div className="float-right">
               <span className="chars">{counterLength}</span>/300
             </div>
           </h6>

@@ -8,13 +8,11 @@ import { getTranslatedLabels } from "./actions/common";
 import "./styles/dashboard.css";
 import "./App.css";
 import "./styles/old.css";
-import Disqus from "disqus-react";
-import ScrollMemory from "react-router-scroll-memory";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
-import Website from "./components/layout/website/index";
+import Website from "./components/layout/website/Website";
 import {
   Home,
   Planners,

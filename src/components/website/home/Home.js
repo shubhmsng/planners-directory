@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { resetResults } from "../../../actions/common";
 import Search from "./search/Search";
 
-import "./Home1.css";
+import "../../../styles/Home1.css";
 import isEmpty from "../../../utils/is-empty";
+import backgroundImg from '../../../img/background.png'
 
 import { withRouter } from "react-router-dom";
 
@@ -38,7 +39,7 @@ class Home extends Component {
       <section
         className="d-flex align-items-center flex-column justify-content-center h-100"
         style={{
-          backgroundImage: "url(" + this.props.websiteBg + ")",
+          backgroundImage: `url(${backgroundImg})`,
           backgroundPosition: "center",
           opacity: 0.9
         }}

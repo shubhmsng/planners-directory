@@ -1,5 +1,5 @@
 import React from "react";
-import "../ui.css";
+import "../../../styles/ui.css";
 
 const GreenButton = ({ label, type, onClick, disabled }) => {
   return (

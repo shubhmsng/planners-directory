@@ -5,10 +5,13 @@ import App from "./App";
 import setAuthToken from "./utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "jquery/dist/jquery";
+import "popper.js";
+import "bootstrap/dist/js/bootstrap.min.js";
 import { Provider } from "react-redux";
 import configureStore from "./configureStore";
-// import "font-awesome/css/font-awesome.min.css";
+import 'font-awesome/css/font-awesome.min.css';
 
 import Modal from "react-modal";
 
