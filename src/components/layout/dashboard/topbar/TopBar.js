@@ -71,11 +71,11 @@ class TopBar extends Component {
                   <li className="list-inline-item">
                     <a
                       href="#"
-                      className="nav-link dropdown-toggle arrow-none waves-effect nav-user"
+                      className="nav-link dropdown-toggle arrow-none waves-effect nav-user mt-2"
                       onClick={this.onClickContactAdmin}
                     >
                       <i>
-                        <AdminIcon />
+                        <AdminIcon style={{height: "23px", width: "30px"}} />
                       </i>
                       {t.contactAdmin}
                     </a>
@@ -84,10 +84,10 @@ class TopBar extends Component {
                     <a
                       onClick={this.onLogout}
                       href="/"
-                      className="nav-link dropdown-toggle arrow-none waves-effect nav-user"
+                      className="nav-link dropdown-toggle arrow-none waves-effect nav-user mt-2"
                     >
                       <i>
-                        <LogOutIcon />
+                        <LogOutIcon style={{height: "23px", width: "30px"}} />
                       </i>
                       {t.logout}
                     </a>

@@ -20,7 +20,7 @@ const SidebarLink = ({ label, comp, linkTo, onClick, disabled }) => {
         exact
         to={linkTo}
       >
-        <i>{comp}</i> <span>{label}</span>
+        <i style={{height: "20px"}}>{comp}</i> <span>{label}</span>
       </NavLink>
     </li>
   );

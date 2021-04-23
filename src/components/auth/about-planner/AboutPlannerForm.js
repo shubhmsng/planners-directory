@@ -3,7 +3,7 @@ import InputGroup from "../../common/InputGroup";
 import SelectListGroup from "../../common/SelectListGroup";
 import ReactFlagsSelect from "react-flags-select";
 
-import "react-flags-select/css/react-flags-select.css";
+//import "react-flags-select/css/react-flags-select.css";
 
 const AboutPlannerForm = ({
   data,
@@ -113,14 +113,11 @@ const AboutPlannerForm = ({
           options={unBlockedAfricanCountriesOptions}
         /> */}
         <ReactFlagsSelect
-          className="menu-flags"
           alignOptions="left"
           name="country"
-          value={data && data.country ? data.country : ""}
+          selected={data && data.country ? data.country : ""}
           selectedSize={17}
           optionsSize={17}
-          countries={unBlockedAfricanCountriesOptions}
-          onSelect={onSelectCountry}
           countries={unBlockedAfricanCountriesOptions}
           onSelect={onSelectCountry}
         />

@@ -2,7 +2,7 @@ import React from "react";
 import EditButton from "../../ui/Buttons/EditButton";
 import isEmpty from "../../../utils/is-empty";
 import ReactFlagsSelect from "react-flags-select";
-import "react-flags-select/css/react-flags-select.css";
+//import "react-flags-select/css/react-flags-select.css";
 import Input from "../../common/InputGroup";
 import SelectListGroup from "../../common/SelectListGroup";
 import ButtonGroup from "../../common/ButtonGroup/ButtonGroup";
@@ -156,14 +156,11 @@ const OfficeView = ({
                     <b>{t.country}</b>
                   </h6>
                   <ReactFlagsSelect
-                    className={
-                      button.disabled ? "menu-flags-disabled" : "menu-flags"
-                    }
                     disabled={button.disabled}
                     alignOptions="left"
                     name="country"
                     defaultCountry={officeData.country}
-                    value={officeData.country}
+                    selected={officeData.country}
                     placeholder={countryName}
                     selectedSize={17}
                     optionsSize={17}

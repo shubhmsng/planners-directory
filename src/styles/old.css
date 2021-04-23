@@ -839,7 +839,7 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover {
 }
 
 .bg-image-Silver {
-  background-color: #c0c0c0;
+  background-color: #c0c0c0 !important;
   height: 100%;
 }
 
@@ -848,15 +848,15 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover {
 }
 
 .bg-image-Bronze {
-  background-color: #e8ad71;
+  background-color: #e8ad71 !important;
 }
 
 .Bronze {
-  background: url(../img/packages/bronze-ce9b6a.png);
+  background: url(../img/packages/bronze.png);
 }
 
 .bg-image-Gold {
-  background-color: #e3cb81;
+  background-color: #e3cb81 !important;
   height: 100%;
 }
 
@@ -900,7 +900,7 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover {
 }
 
 .bg-image-Custom {
-  background-color: #ecf3fb;
+  background-color: #ecf3fb !important;
   height: 100%;
 }
 
