@@ -28,10 +28,10 @@ class TopBar extends Component {
               <a
                 onClick={this.onLogout}
                 href="/"
-                className="nav-link dropdown-toggle arrow-none waves-effect nav-user"
+                className="nav-link dropdown-toggle arrow-none waves-effect nav-user mt-2"
               >
                 <i>
-                  <LogOutIcon />
+                  <LogOutIcon style={{height: "23px", width: "30px"}}/>
                 </i>
                 Logout
               </a>

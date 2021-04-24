@@ -52,13 +52,11 @@ export const getAdminData = () => dispatch => {
     .get("/api/admin")
     .then(res => {
       let data = {...res.data};
-      data.aboutUs = Object.keys(res.data).length > 0 ? res.data.aboutUs.replace(/\\"/g, '"') : "";
-      data.terms = Object.keys(res.data).length > 0 ? res.data.terms.replace(/\\"/g, '"') : "";
-      data.pp = Object.keys(res.data).length > 0 ? res.data.pp.replace(/\\"/g, '"') : "";
-      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/\\n/g, ""): "";
-      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/\\/g, ""): "";
-      data.pp = Object.keys(res.data).length > 0 ? data.pp.replace(/p/g, ""): "";
-      console.log(data);
+      // data.aboutUs = Object.keys(res.data).length > 0 ? res.data.aboutUs.replace(/\\"/g, '"') : "";
+      // data.terms = Object.keys(res.data).length > 0 ? res.data.terms.replace(/\\"/g, '"') : "";
+      // //data.pp = Object.keys(res.data).length > 0 ? res.data.pp.replace(/\\"/g, '"') : "";
+      
+      // console.log(data.pp);
       dispatch({ type: GET_ADMIN_DATA, payload: data });
       dispatch(getCateringOptions(res.data.catering));
       dispatch(getCategoriesOptions(res.data.categories));
@@ -77,7 +75,7 @@ export const getAdminDataOnSuccess = data => dispatch => {
 export const addNoticeboard = (newNotice, history) => dispatch => {
   axios
     .post("/api/admin/noticeboard", newNotice)
-    .then(window.location.reload())
+    .then()
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 

@@ -94,13 +94,13 @@ class Footer extends Component {
           t={t}
         />
 
-        {/* <PrivacyPolicy
+        <PrivacyPolicy
           openModal={this.openModalP}
           closeModal={this.closeModalP}
           modalIsOpen={this.state.pIsOpen}
           pp={this.props.pp}
           t={t}
-        /> */}
+        />
       </footer>
     );
   }

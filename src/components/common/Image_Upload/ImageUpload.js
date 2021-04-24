@@ -49,6 +49,7 @@ const ImageUpload = ({
         disabled={disabled}
         id={id}
         onClick={onClick}
+        style={{width: '180px'}}
         className="btn btn-primary ml-4"
       >
         {label}

@@ -63,6 +63,7 @@ class Noticeboard extends ImageForm {
         onChange={this.onChange}
         title={title}
         desc={desc}
+        data={this.state.data ? this.state.data.noticeboard : ""}
         onImageSelected={this.onImageSelected}
         onImageUpload={this.onImageUpload}
         onSubmit={this.onSubmit}

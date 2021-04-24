@@ -8,7 +8,8 @@ const NoticeboardView = ({
   onImageSelected,
   onImageUpload,
   onSubmit,
-  clearState
+  clearState,
+  data
 }) => {
   return (
     <div className="tab-pane" id="services" role="tabpanel">
@@ -54,6 +55,7 @@ const NoticeboardView = ({
                   id="noticeboard"
                   type="upload"
                   label="Upload Image"
+                  data = {data}
                   onChangeImage={onImageSelected}
                   onClick={onImageUpload}
                 />
