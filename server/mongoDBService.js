@@ -316,11 +316,11 @@ module.exports.updateProfile = async (data, email, res) => {
     await client.db("planners-directory").collection("users").updateOne({ "email": email }, { $set: { profileCompleted: true } }, { upsert: false });
     await result.forEach(item => {
         try {
-            res.send(item)            
+            res.send(item).end();            
         } catch (error) {
             
         }
-    }).end();
+    });
     try {
         res.status(500).send({}).end();        
     } catch (error) {
