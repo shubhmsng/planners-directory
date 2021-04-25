@@ -219,6 +219,23 @@ app.post('/api/planner/packages/new', (req, res) => {
   }
 });
 
+app.post('/api/planner/packages', (req, res) => {
+  const data = req.body;
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, accessTokenSecret, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      MongoDBService.addPackages(data, user.email, res);
+    });
+  } else {
+    res.sendStatus(401);
+  }
+});
+
 app.post('/api/image-upload/:imageno', upload.any('file'), (req, res, next) => {
   res.send({ imageUrl: req.files[0].location });
 });
