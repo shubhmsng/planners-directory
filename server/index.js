@@ -198,6 +198,23 @@ app.post('/api/:type/profile/new', (req, res) => {
   }
 });
 
+app.post('/api/:type/profile', (req, res) => {
+  const data = req.body;
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+
+    jwt.verify(token, accessTokenSecret, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      MongoDBService.updateProfile(data, user.email, res);
+    });
+  } else {
+    res.sendStatus(401);
+  }
+});
+
 app.get('/api/admin/noticeboard', (req, res) => {
   MongoDBService.getNoticeBoard(res);
 });
