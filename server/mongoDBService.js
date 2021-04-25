@@ -552,7 +552,7 @@ module.exports.resetPassword = async (data, email, res) => {
         });
     })
 
-    await user.count((err, t) => {
+    await userCur.count((err, t) => {
         if (!t) {
             try {
                 res.status(400).send({ "email": "Email don't exists" });                
