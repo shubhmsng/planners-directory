@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
+const path = require('path');
 
 const accessKeyId = process.env.AWS_ACCESS_KEY;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
@@ -22,6 +23,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(pino);
+app.use(express.static(path.join(__dirname,'../', 'build')))
 
 const upload = multer({
   storage: multerS3({
@@ -683,8 +685,11 @@ app.get('/api/vendor/services/:id', (req, res) => {
   MongoDBService.getVendorPackageData(req, res);
 });
 
+app.use('*', function (request, response) {
+  response.sendFile(path.join(__dirname, '../', 'build', 'index.html'));
+});
 
 
-app.listen(3001, () =>
-  console.log('Express server is running on localhost:3001')
+app.listen(3000, () =>
+  console.log('Express server is running on localhost:3000')
 );
