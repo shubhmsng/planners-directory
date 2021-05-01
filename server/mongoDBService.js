@@ -90,7 +90,11 @@ module.exports.getPackages = async (email, res) => {
 module.exports.getCountries = async (continent, res) => {
     await client.connect();
     continent = continent.charAt(0).toUpperCase() + continent.slice(1);
-    const countries = await client.db("planners-directory").collection("countries").find({ "continent": continent });
+    let find = {}
+    if(continent !== "All") {
+        find = { "continent": continent }
+    }
+    const countries = await client.db("planners-directory").collection("countries").find(find);
     let data = [];
     await countries.forEach(country => data.push(country));
     try{
@@ -917,4 +921,188 @@ module.exports.deleteProfile = async (data, res) => {
 
     await client.db("planners-directory").collection("profile").deleteOne({ "user._id": ObjectId(data.id) });
     res.send({ "message": "Successfully Deleted" });
+}
+
+module.exports.getPlanners = async(req, res) => {
+    const pageNo = parseInt(req.query.pageNo);
+    await client.connect();
+    const count = await client.db("planners-directory").collection("profile").countDocuments({"user.userRole": "planner"});
+    const limit = 20;
+    let pager = { }
+    let next = { limit }
+    let prev = { limit }
+    let results = { }
+    if(pageNo) {
+        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "planner"}).skip((pageNo - 1) * limit).limit(limit);
+        let data = [];
+        await profiles.forEach(profile => data.push(profile));
+        profiles.count((e, t) => {
+            if(!e) {
+                pager.currentPage = pageNo;
+                pager.endIndex = (count / limit * pageNo) > 1 ? (limit * pageNo) - 1 : count - 1;
+                pager.endPage = Math.ceil(count / limit);
+                pager.pageSize = limit;
+                pager.pages = Array(pager.endPage).fill().map((v, i) => i + 1)
+                pager.startIndex = limit * (pageNo - 1);
+                pager.startPage = 1;
+                pager.totalItems = count;
+                pager.totalPages = pager.endPage;
+
+                results = data;
+
+                if((count / (limit * pageNo)) > 1) {
+                    next.page = pageNo + 1;
+                    prev.page = pageNo - 1;
+                    res.send({pager, results, next, prev})
+                } else {
+                    prev.page = pageNo - 1;
+                    res.send({pager, results, prev})
+                }
+
+            } else {
+                res.sendStatus(500).send({});
+            }
+        })
+    } else {
+        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "planner"}).limit(limit);
+        let data = [];
+        await profiles.forEach(profile => data.push(profile));
+        profiles.count((e, t) => {
+            if(!e) {
+                pager.currentPage = 1;
+                pager.endIndex = limit - 1;
+                pager.endPage = Math.ceil(count / limit);
+                pager.pageSize = limit;
+                pager.pages = Array(pager.endPage).fill().map((v, i) => i + 1)
+                pager.startIndex = 0;
+                pager.startPage = 1;
+                pager.totalItems = count;
+                pager.totalPages = pager.endPage;
+
+                results = data;
+
+                if(((count / limit)) > 1) {
+                    next.page = 2;
+                    res.send({pager, results, next})
+                } else {
+                    res.send({pager, results})
+                }
+
+            } else {
+                res.sendStatus(500).send({});
+            }
+        })
+    }
+}
+
+module.exports.vendors = async(req, res) => {
+    const pageNo = parseInt(req.query.pageNo);
+    await client.connect();
+    const count = await client.db("planners-directory").collection("profile").countDocuments({"user.userRole": "vendor"});
+    const limit = 20
+    let pager = { }
+    let next = { limit }
+    let prev = { limit }
+    let results = { }
+    if(pageNo) {
+        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "vendor"}).skip((pageNo - 1) * limit).limit(limit);
+        let data = [];
+        await profiles.forEach(profile => data.push(profile));
+        profiles.count((e, t) => {
+            if(!e) {
+                pager.currentPage = pageNo;
+                pager.endIndex = (count / limit * pageNo) > 1 ? (limit * pageNo) - 1 : count - 1;
+                pager.endPage = Math.ceil(count / limit);
+                pager.pageSize = limit;
+                pager.pages = Array(pager.endPage).fill().map((v, i) => i + 1)
+                pager.startIndex = limit * (pageNo - 1);
+                pager.startPage = 1;
+                pager.totalItems = count;
+                pager.totalPages = pager.endPage;
+
+                results = data;
+
+                if((count /  limit * pageNo) > 1) {
+                    next.page = pageNo + 1;
+                    prev.page = pageNo - 1;
+                    res.send({pager, results, next, prev})
+                } else {
+                    prev.page = pageNo - 1;
+                    res.send({pager, results, prev})
+                }
+
+            } else {
+                res.sendStatus(500).send({});
+            }
+        })
+    } else {
+        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "vendor"}).limit(limit);
+        let data = [];
+        await profiles.forEach(profile => data.push(profile));
+        profiles.count((e, t) => {
+            if(!e) {
+                pager.currentPage = 1;
+                pager.endIndex = limit - 1;
+                pager.endPage = Math.ceil(count / limit);
+                pager.pageSize = limit;
+                pager.pages = Array(pager.endPage).fill().map((v, i) => i + 1)
+                pager.startIndex = 0;
+                pager.startPage = 1;
+                pager.totalItems = count;
+                pager.totalPages = pager.endPage;
+
+                results = data;
+
+                if((count / limit) > 1) {
+                    next.page = 2;
+                    res.send({pager, results, next})
+                } else {
+                    res.send({pager, results})
+                }
+
+            } else {
+                res.sendStatus(500).send({});
+            }
+        })
+    }
+}
+
+module.exports.getPlannerPackage = async (req, res) => {
+    await client.connect();
+    const profile_cur = await client.db("planners-directory").collection("profile").find({ storeName: req.params.storeName });
+    let data = {};
+    await profile_cur.forEach(profile => data = profile);
+    try {
+        res.send(data);
+    } catch (err) {}
+}
+
+module.exports.getPlannerPackageData = async (req, res) => {
+    await client.connect();
+    const package_cur = await client.db("planners-directory").collection("packages").find({ user: ObjectId(req.params.id) });
+    let data = {};
+    await package_cur.forEach(package => data = package);
+    try {
+        res.send(data);
+    } catch (err) {}
+}
+
+module.exports.getVendorPackage = async (req, res) => {
+    await client.connect();
+    const profile_cur = await client.db("planners-directory").collection("profile").find({ storeName: req.params.storeName });
+    let data = {};
+    await profile_cur.forEach(profile => data = profile);
+    try {
+        res.send(data);
+    } catch (err) {}
+}
+
+module.exports.getVendorPackageData = async (req, res) => {
+    await client.connect();
+    const package_cur = await client.db("planners-directory").collection("services").find({ user: ObjectId(req.params.id) });
+    let data = {};
+    await package_cur.forEach(package => data = package);
+    try {
+        res.send(data);
+    } catch (err) {}
 }

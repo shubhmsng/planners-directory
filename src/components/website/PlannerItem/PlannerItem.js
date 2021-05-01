@@ -29,10 +29,10 @@ class PlannerItem extends Component {
     const { userId } = this.props.location.state;
     if (handler === `/planners/${id}`) {
       this.props.getPlannerbyId(id);
-      this.props.getPlannerItemPackages(userId);
+      this.props.getPlannerItemPackages(userId._id);
     } else if (handler === `/vendors/${id}`) {
       this.props.getVendorbyId(id);
-      this.props.getVendorItemServices(userId);
+      this.props.getVendorItemServices(userId._id);
     }
   };
 

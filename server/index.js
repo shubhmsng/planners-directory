@@ -105,6 +105,15 @@ app.get('/api/location/countries/:continent', (req, res) => {
   }
 });
 
+app.get('/api/location/countries/:continent/all', (req, res) => {
+
+  if (req.params.continent === "cblocked") {
+    MongoDBService.getCountriesByStatus(res, true)
+  } else {
+    MongoDBService.getCountries(req.params.continent, res);
+  }
+});
+
 app.post('/api/location/countries/:isBlocked', (req, res) => {
   const authHeader = req.headers.authorization;
   if (authHeader) {
@@ -648,6 +657,32 @@ app.post('/api/admin/users/:type', (req, res) => {
     res.sendStatus(401);
   }
 });
+
+
+app.get('/api/planner', (req, res) => {
+  MongoDBService.getPlanners(req, res);
+});
+
+app.get('/api/vendor', (req, res) => {
+  MongoDBService.vendors(req, res);
+});
+
+app.get('/api/planner/:storeName', (req, res) => {
+  MongoDBService.getPlannerPackage(req, res);
+});
+
+app.get('/api/planner/packages/:id', (req, res) => {
+  MongoDBService.getPlannerPackageData(req, res);
+});
+
+app.get('/api/vendor/:storeName', (req, res) => {
+  MongoDBService.getVendorPackage(req, res);
+});
+
+app.get('/api/vendor/services/:id', (req, res) => {
+  MongoDBService.getVendorPackageData(req, res);
+});
+
 
 
 app.listen(3001, () =>
