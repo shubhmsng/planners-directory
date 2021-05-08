@@ -3,7 +3,7 @@ import "../../../styles/Buttons.css";
 
 const AddButton = ({ type, onClick, disabled, label }) => (
   <button
-    className="customBtn add"
+    className="customBtn add btn btn-success"
     onClick={onClick}
     type={type}
     disabled={disabled}

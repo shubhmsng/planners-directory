@@ -47,7 +47,7 @@ const PackagesView = ({
       >
         <fieldset disabled={!featuresCompleted ? "" : button.formdisabled}>
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-4" style={{margin: "10px 0"}}>
               <div
                 className={`card pkg-gold package-card m-b-30 border-1-gray bg-image-${p1Title}`}
               >
@@ -291,7 +291,7 @@ const PackagesView = ({
               </div>
               {/* end card */}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4" style={{margin: "10px 0"}}>
               <div
                 className={`card pkg-gold package-card m-b-30 border-1-gray bg-image-${p2Title}`}
               >
@@ -527,7 +527,7 @@ const PackagesView = ({
               </div>
               {/* end card */}
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4" style={{margin: "10px 0"}}>
               <div
                 className={`card pkg-gold package-card m-b-30 border-1-gray bg-image-${p3Title}`}
               >

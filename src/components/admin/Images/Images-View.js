@@ -17,11 +17,11 @@ const ImagesView = ({
         <div className="col-md-12 text-center">
           <h4 className="font-32 tabs-title">Upload Images</h4>
         </div>
-        <form id="images" onSubmit={onSubmit}>
           <div className="col-md-12">
+          <form id="images" onSubmit={onSubmit}>
+
             <div
               className="card m-b-30 border-1-gray"
-              style={{ width: "1100px" }}
             >
               <div className="card-body">
                 <h6 className="text-muted m-t-20">
@@ -60,20 +60,26 @@ const ImagesView = ({
                 <h6 className="text-muted m-t-20">
                   <b>Sponsor Link: </b>
                 </h6>
-                <InputGroup
-                  name="sponsorLink"
-                  placeholder="Add Sponsor Link here"
-                  value={data.sponsorLink}
-                  onChange={onChange}
-                />
-                <AddButton type="button" onClick={onAddLink}>
-                  Add Link
-                </AddButton>
+                <div className="row">
+                  <div className="col-md-9 col-sm-9" style={{marginBottom: "10px"}}>
+                    <InputGroup
+                      name="sponsorLink"
+                      placeholder="Add Sponsor Link here"
+                      value={data.sponsorLink}
+                      onChange={onChange}
+                    />
+                  </div>
+                  <div className="col-md-3 col-sm-3" style={{textAlign: "end"}}>
+                    <AddButton type="button" onClick={onAddLink}>
+                      Add Link
+                    </AddButton>
+                  </div>
+                </div>
               </div>
             </div>
             {/* end card */}
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

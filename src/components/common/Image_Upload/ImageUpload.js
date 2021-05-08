@@ -16,7 +16,8 @@ const ImageUpload = ({
 
 
   return (
-    <div className="d-flex" style={{ paddingTop: "30px" }}>
+    <div className="row" style={{ paddingTop: "10px" }}>
+      <div className = "col-md-9 col-sm-9" style={{display: "flex", marginBottom: "10px"}}>
       <div
         className="image-show"
         style={{ backgroundImage: "url(" + data + ")" }}
@@ -44,16 +45,17 @@ const ImageUpload = ({
           Example invalid custom file feedback
         </div>
       </div>
-      <button
-        type={type}
-        disabled={disabled}
-        id={id}
-        onClick={onClick}
-        style={{width: '180px'}}
-        className="btn btn-primary ml-4"
-      >
-        {label}
-      </button>
+      </div>
+      <div className="col-md-3 col-sm-3" style={{marginBottom: "10px", display: "flex", flexDirection: "row-reverse" }}>
+        <button
+          type={type}
+          disabled={disabled}
+          id={id}
+          onClick={onClick}
+          className="btn btn-primary"
+        >
+          {label}
+        </button>
 
     
       {/* <div >{imagePreview}</div> */}
@@ -76,7 +78,6 @@ const ImageUpload = ({
       {/*>*/}
       {/*{label}*/}
       {/*</button>*/}
-      <div className="tick-container">
         {data ? (
           <img className="upload-image-tick" src={TickIcon} alt="Tick Icon" />
         ) : null}

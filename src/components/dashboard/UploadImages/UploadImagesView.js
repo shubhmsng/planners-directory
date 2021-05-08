@@ -19,7 +19,9 @@ const UploadImagesView = ({
         <div className="col-md-12 text-center">
           <h4 className="font-32 tabs-title">{t.uploadImage}</h4>
         </div>
-        <form id="images text-center" onSubmit={onSubmit}>
+      </div>
+      <form id="images text-center" onSubmit={onSubmit}>
+        <div className="row">
           <div className="col-md-12">
             <div className="alert alert-warning">
               <strong>{`${t.warning}!`}</strong> {t.uploadImageWarnings}
@@ -29,7 +31,6 @@ const UploadImagesView = ({
           <div className="col-md-12">
             <div
               className="card m-b-30 border-1-gray"
-              style={{ width: "50rem" }}
             >
               <div className="card-body">
                 <ImageUpload
@@ -80,8 +81,8 @@ const UploadImagesView = ({
             </div>
             {/* end card */}
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
       {/* <div className="bd-top" />
       <div className="osr-btn-group p-b-15  text-center">
         <SaveButton label="Save" form="images" type="save" onClick={onSubmit} />

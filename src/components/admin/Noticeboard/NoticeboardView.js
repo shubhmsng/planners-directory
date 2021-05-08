@@ -17,11 +17,11 @@ const NoticeboardView = ({
         <div className="col-md-12 text-center">
           <h4 className="font-32 tabs-title">Noticeboard</h4>
         </div>
-        <form id="noticeboard" onSubmit={onSubmit}>
+        
           <div
-            className="col-md-12 offset-md-2 text-center"
-            style={{ width: "1000px" }}
+            className="col-md-12 text-center"
           >
+            <form id="noticeboard" onSubmit={onSubmit}>
             <div className="card m-b-30 border-1-gray">
               <div className="card-body">
                 <h6 className="text-muted mt-0">
@@ -62,8 +62,8 @@ const NoticeboardView = ({
               </div>
             </div>
             {/* end card */}
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
       <div className="bd-top" />
       <div className="osr-btn-group p-b-15  text-center">

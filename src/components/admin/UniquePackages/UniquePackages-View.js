@@ -28,7 +28,7 @@ const UniquePackagesView = ({
         <div className="col-md-12 text-center">
           <form id="unique" onSubmit={onSubmitForm} noValidate>
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md-4" style={{margin: "20px 0"}}>
                 <div className="card pkg-goldm-b-30 border-1-gray bg-image-Bespoke">
                   <div className="price-table-head BeSpoke">
                     <h6>Bespoke</h6>
@@ -53,7 +53,7 @@ const UniquePackagesView = ({
                 </div>
                 {/* end card */}
               </div>
-              <div className="col-md-4">
+              <div className="col-md-4" style={{margin: "20px 0"}}>
                 <div className="card pkg-goldm-b-30 border-1-gray bg-image-Custom">
                   <div className="price-table-head Custom">
                     <h6>Custom</h6>

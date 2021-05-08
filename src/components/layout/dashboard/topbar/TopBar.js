@@ -47,27 +47,8 @@ class TopBar extends Component {
         <nav className="navbar-custom">
           <div className="container-fluid">
             <div className="row">
-              <div
-                className="col-sm-6 col-md-6"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "center",
-                  alignItems:
-                    this.state.screenSize >= 1200 ? "flex-end" : "center"
-                }}
-              >
-                {/* <h4
-                  style={{
-                    color: "green",
-                  }}
-                >
-                  Your Profile is live
-                </h4> */}
-              </div>
-
-              <div className="col-sm-6 col-md-6">
-                <ul className=" list-inline float-right mb-0">
+              <div className="col-sm-11 col-md-11" style={{marginLeft: "50px"}}>
+                <ul className=" list-inline float-right mb-0" style={{ textAlign: "end" }}>
                   <li className="list-inline-item">
                     <a
                       href="#"

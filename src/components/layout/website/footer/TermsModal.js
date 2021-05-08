@@ -13,7 +13,7 @@ const TermsModal = ({ modalIsOpen, closeModal, terms, t }) => {
       overlayClassName="react-modal-overlay"
     >
       <div className="">
-        <div className="modal-header" style={{ padding: "0rem" }}>
+        <div className="modal-header" style={{ padding: "5px", background: "white" }}>
           <button type="button" className="close" onClick={closeModal}>
             <span aria-hidden="true">&times;</span>
             <span className="sr-only">Close</span>

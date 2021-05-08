@@ -12,7 +12,7 @@ const InputGroup = ({
   onChange
 }) => {
   return (
-    <div className="">
+    <React.Fragment>
       {/* <div className="input-group-prepend">
         <span className="input-group-text">
           <i className={icon} />
@@ -28,7 +28,7 @@ const InputGroup = ({
         onChange={onChange}
       />
       {error && <div className="invalid-feedback">{error}</div>}
-    </div>
+    </React.Fragment>
   );
 };
 

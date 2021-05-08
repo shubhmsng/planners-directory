@@ -667,8 +667,8 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover {
   margin-top: 50px;
 }
 .upload-image-tick {
-  padding-left: 5px;
-  width: 100%;
+  padding-right: 5px;
+  width: 25px;
   padding-top: 9px;
 }
 .tick-container {
@@ -1319,7 +1319,7 @@ h5 .comment-meta li:last-child::before {
   /* top: 512px; */
 
   max-height: 500px;
-  overflow-y: scroll;
+  overflow-y: none;
 }
 
 .editor-about-us-content {
@@ -1441,11 +1441,11 @@ h5 .comment-meta li:last-child::before {
     padding: 0 15px;
   }
   .navbar-toggler {
-    background: rgba(255, 255, 255, 0.4);
-    border-color: #fff;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border-color: #fff !important;
   }
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
   }
   .navbar .float-left {
     position: relative;
@@ -1486,12 +1486,11 @@ h5 .comment-meta li:last-child::before {
       FROM 0PX TO 767PX
   =================================================
   */
-@media (max-width: 767px) {
+@media (max-width: 926px) {
   .list-style .package-thumb-header .small-btn-wrap .badge {
     margin: 0 0px;
   }
   .about-us-wrap {
-    max-width: 450px;
     width: 100%;
   }
   .about-caption {
@@ -1742,7 +1741,7 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover,
   /* right: -90px; */
   font-size: 14px;
   width: 300px;
-  padding-left: 10px;
+  padding: 10px;
   color: #fff;
   background-color: #555;
   border-radius: 3px;
@@ -1774,4 +1773,22 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover,
   border: 0;
   padding: 6px 22.5px 6px 22.5px;
   font-size: 0.8em;
+}
+
+
+@media screen and (max-width: 800px) {
+  .pop-up-text-icon:before {
+    padding: 10px;
+    width: 100%;
+    top: 15px
+  }
+
+  .input-radio .input-container {
+    margin-left: 0;
+  }
+
+  .input-radio {
+    flex-direction: column;
+  }
+  
 }

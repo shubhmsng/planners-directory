@@ -25,7 +25,7 @@ class AdminDashboard extends Component {
             <div className="content-page">
               <div className="content">
                 <AdminTopBar />
-                <div className="page-content-wrapper">
+                <div className="page-content-wrapper" style={{marginTop: 0, paddingBottom: "30px"}}>
                   <div className="container-fluid">
                     <div className="row">
                       <div className="col-sm-12 sub-banner">

@@ -106,11 +106,10 @@ class Search extends Component {
             style={{ display: "flex", justifyContent: "stretch" }}
           >
             <div className="col-md-5">
-              <div className="form-group" style={{ paddingLeft: "3rem" }}>
+              <div className="form-group">
                 {/* <span className="fa fa-search form-control-feedback" /> */}
                 <input
                   name="searchQuery"
-                  style={{ width: "28rem" }}
                   type="text"
                   className="form-control"
                   placeholder="Search"
@@ -133,7 +132,7 @@ class Search extends Component {
           </div>
         </form>
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-12" style={{overflowX: "auto"}}>
             <table class="table">
               <thead>
                 <tr>

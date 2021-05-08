@@ -50,7 +50,7 @@ const ProfileView = ({
           </EditButton>
         </div>
       </div>
-      <form id="profile" onSubmit={onSubmit} noValidate text-center>
+      <form id="profile" onSubmit={onSubmit} noValidate style={{overflowX: "hidden"}}>
         <fieldset disabled={!data.profileCompleted ? "" : button.formdisabled}>
           <div className="row">
             <div className="col-md-4">
@@ -117,7 +117,7 @@ const ProfileView = ({
                 </span>
               </h4>
             </div>
-            <div className="col-md-12 m-t-20 custom-xs-center">
+            <div className="col-md-12 m-t-20">
               <div className="d-flex input-radio">
                 <div className="input-container">
                   <label>

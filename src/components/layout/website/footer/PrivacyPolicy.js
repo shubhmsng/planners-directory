@@ -13,7 +13,7 @@ const PrivacyPolicy = ({ modalIsOpen, closeModal, pp, t }) => {
       overlayClassName="react-modal-overlay"
     >
       <div className="">
-        <div className="modal-header" style={{ padding: "0rem" }}>
+        <div className="modal-header" style={{ padding: "5px", background: "white" }}>
           <button type="button" className="close" onClick={closeModal}>
             <span aria-hidden="true">&times;</span>
             <span className="sr-only">Close</span>
@@ -39,7 +39,7 @@ const PrivacyPolicy = ({ modalIsOpen, closeModal, pp, t }) => {
                 )}
                 wrapperClassName="editor-about-us-wrapper"
                 editorClassName="editor-about-us-content"
-                editorStyle={{ overFlow: "none", overFlowY: "none" }}
+                editorStyle={{ overflowY: "auto", display: "grid"}}
               />
             </div>
           </div>

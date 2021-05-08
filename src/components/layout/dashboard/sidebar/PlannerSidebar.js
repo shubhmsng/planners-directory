@@ -23,7 +23,23 @@ class PlannerSidebar extends Component {
   //   this.setState({ disableProperty: property });
   // }
 
+  constructor(props) {
+    super(props);
+    this.state = {openSidebar: false}
+  }
+
+  hideSidebar = (e) => {
+    if(window.innerWidth < 1020) {
+      this.setState({openSidebar: !this.state.openSidebar})
+    }
+  }
+
   handleClick = (e) => {
+    
+    if(window.innerWidth < 1020) {
+      this.hideSidebar();
+    }
+
     if (this.props.disabled) {
       e.preventDefault();
     }
@@ -31,7 +47,7 @@ class PlannerSidebar extends Component {
   render() {
     const { disabled, t } = this.props;
     return (
-      <div disabled="true" className="left side-menu">
+      <div disabled="true" className="left side-menu" style={ window.innerWidth < 1020 ? this.state.openSidebar  ? {zIndex: "100001", left: "0"} : {zIndex: "100001", left: "-100%"} : {zIndex: "100001", left: "0"}}>
         <button
           className="navbar-toggler"
           type="button"
@@ -40,17 +56,19 @@ class PlannerSidebar extends Component {
           aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick = {(e) => this.setState({openSidebar: !this.state.openSidebar})}
+          style={{position: "fixed", left: "20px", top: "6px"}}
         >
           <span className="navbar-toggler-icon" />
         </button>
         <div className="left-side-logo d-block d-lg-none">
-          <div className="text-center">
+          <div style={{textAlign: "end", paddingRight: "10px"}}>
             <a href="index.html" className="logo">
               <img src={Logo} width={130} alt="logo" />
             </a>
           </div>
         </div>
-        <div className="sidebar-inner slimscrollleft">
+        <div className="sidebar-inner slimscrollleft" style={{overflowY: "auto"}}>
           <div id="sidebar-menu">
             <ul className="nav nav-tabs" role="tablist">
               <SidebarLink
@@ -63,6 +81,7 @@ class PlannerSidebar extends Component {
               <SidebarLink
                 label={t.profile}
                 comp={<Icon2 />}
+                onClick={this.hideSidebar}
                 linkTo="/dashboard/profile"
               />
               <SidebarLink

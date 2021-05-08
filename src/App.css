@@ -307,11 +307,6 @@ ul.pagination a.page-link:hover {
   padding-bottom: 10px;
 }
 
-.rdw-editor-main {
-  height: 100%;
-  overflow: hidden !important;
-}
-
 .centered {
   position: fixed;
   top: 50%;
@@ -341,16 +336,7 @@ ul.pagination a.page-link:hover {
   background-color: white;
 }
 
-.react-modal-styling {
-  position: absolute;
-  top: 114px;
-  left: 136px;
-  right: 134px;
-  bottom: 120px;
 
-  /* bring your own prefixes */
-  background-color: white;
-}
 .ReactModal__Overlay.ReactModal__Overlay--after-open.react-modal-confirm {
   z-index: 9999;
 }
@@ -378,15 +364,6 @@ ul.pagination a.page-link:hover {
   background-color: rgba(0, 0, 0, 0.6) !important; /*dim the background*/
 }
 
-.about-vendor-modal-styling {
-  position: absolute;
-  top: 114px;
-  left: 136px;
-  right: 134px;
-  bottom: 50px;
-
-  /* bring your own prefixes */
-}
 
 /* About Planner/Vendor Modal */
 /* .modal {
@@ -462,4 +439,122 @@ ul.pagination a.page-link:hover {
 }
 .gray-color {
   color: #687189;
+}
+
+
+@media only screen and (min-width: 1020px) {
+  .react-modal-styling {
+    position: absolute;
+    top: 114px;
+    left: 136px;
+    right: 134px;
+    bottom: 120px;
+  
+    /* bring your own prefixes */
+    background-color: white;
+  }
+  .about-vendor-modal-styling {
+    position: absolute;
+    top: 114px;
+    left: 136px;
+    right: 134px;
+    bottom: 50px;
+  
+    /* bring your own prefixes */
+  }
+  
+}
+
+
+.editor-about-us-wrapper {
+  height: 58vh !important;
+}
+
+@media only screen and (max-width: 720px) {
+  .react-modal-styling {
+    height: 100vh;  
+    /* bring your own prefixes */
+    background-color: white;
+  }
+  .editor-about-us-content {
+    position: relative;
+    top: 10px;
+  }
+  .editor-about-us-wrapper {
+    width: 99% !important;
+    max-height: none;
+    display: grid;
+  }
+
+  .modal-image-style {
+    padding: 5px;
+    width: 50px
+  }
+
+  .about-us-wrap figure {
+    min-width: fit-content  !important;
+    padding-right: 20px !important;
+  }
+  .about-caption {
+    flex-wrap: wrap;
+  }
+  .rdw-editor-main {
+    height: auto !important;
+  }
+}
+
+@media only screen and (max-width: 926px) {
+  @media only screen and (orientation: landscape) {
+    .react-modal-styling {
+      height: 100vh;  
+      /* bring your own prefixes */
+      background-color: white;
+    }
+    .editor-about-us-content {
+      position: relative;
+      top: 10px;
+    }
+    .editor-about-us-wrapper {
+      width: 99% !important;
+      max-height: none;
+      display: grid;
+    }
+  
+    .modal-image-style {
+      padding: 5px;
+      width: 50px
+    }
+  
+    .about-us-wrap figure {
+      min-width: fit-content  !important;
+      padding-right: 20px !important;
+    }
+    .about-caption {
+      flex-wrap: wrap;
+    }
+    .rdw-editor-main {
+      height: auto !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 334px) {
+  .editor-about-us-wrapper {
+    height: 44vh !important;
+    max-height: none !important;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .page-content-wrapper {
+    margin-top: 171px;
+    overflow-x: auto;
+  }
+}
+
+@media screen and (max-width: 474px) and (min-width: 414px) {
+  .page-content-wrapper {
+    margin-top: 100px;
+    overflow-x: auto;
+  }
 }
