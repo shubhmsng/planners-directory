@@ -1610,7 +1610,7 @@ h5 .comment-meta li:last-child::before {
   .list-style .small-btn-wrap .badge {
     padding-left: 20px;
     padding-right: 20px;
-    margin: 10px 5px 10px 0;
+    margin-left: 15px;
   }
   .tabs-area .nav-tabs .nav-link {
     padding: 15px;
@@ -1619,9 +1619,7 @@ h5 .comment-meta li:last-child::before {
     width: 100%;
     margin: 0 0 5px;
   }
-  .package-thumb-footer .social-list {
-    margin-top: 10px;
-  }
+
   .package-thumb-footer .social-list li {
     width: auto;
     margin: 0 0px 0 10px;
@@ -1780,7 +1778,8 @@ header .navbar-expand-lg .navbar-nav .nav-link:hover,
   .pop-up-text-icon:before {
     padding: 10px;
     width: 100%;
-    top: 15px
+    top: 15px;
+    display: inline-table;
   }
 
   .input-radio .input-container {

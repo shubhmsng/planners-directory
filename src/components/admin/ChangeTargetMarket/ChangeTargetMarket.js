@@ -52,7 +52,7 @@ class ChangeTargetMarket extends Component {
               <div className="col-md-12">
                 {/* <h4 className="font-18 mb-0 tabs-title">Target Market</h4> */}
               </div>
-              <div className="col-md-12 m-t-20 custom-xs-center">
+              <div className="col-md-12 m-t-20" style={{marginLeft: "20px"}}>
                 <div className="d-flex input-radio ">
                   <div className="input-container">
                     <label>

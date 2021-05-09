@@ -942,7 +942,6 @@ h6.text-muted {
 .content-page {
   margin-left: 226px;
   overflow: hidden;
-  min-height: 650px;
 }
 
 .content-page > .content {

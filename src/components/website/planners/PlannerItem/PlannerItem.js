@@ -35,9 +35,7 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: "1100px",
-      height: "650px"
+      transform: "translate(-50%, -50%)"
     }
   };
 
@@ -67,11 +65,11 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
 
   return (
     <div className="package-thumb-wrap list-style">
-      <div className="package-thumb-header">
+      <div className="package-thumb-header pb-3" >
         <div className="row">
           <div className="col-md-6">
-            <div className="row">
-              <div className="col-md-5" style={{ paddingRight: "0px" }}>
+            <div className="row mb-3">
+              <div className="col-md-5">
                 <h6>
                   <strong>{storeName}</strong>
                 </h6>
@@ -79,7 +77,7 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
                   <div style={{ width: "80%" }} className="rating_up" />
                 </div>
               </div>
-              <div className="col-md-7" style={{ padding: 0 }}>
+              <div className="col-md-7">
                 <div className="" style={{ display: "inline-block" }}>
                   {categories.map(category => (
                     <div key={category._id} className="badge">
@@ -107,10 +105,10 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
           ) : null}
         </div>
       </div>
-      <div className="row">
+      <div className="row mt-3">
         <div className="col-md-6">
           <div className="package-thumb-caption border-0">
-            <p>{description}</p>
+            <p style={{overflowWrap: "anywhere"}}>{description}</p>
           </div>
         </div>
         {!isEmpty(imageValues) ? (
@@ -236,7 +234,7 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
             </span>
             {pathname === "/planners" ? (
               <Link
-                className={`btn th-bg badge`}
+                className={`btn th-bg badge p-2`}
                 to={{
                   pathname: `/planners/${storeName}`,
                   state: { userId: user.user }
@@ -246,7 +244,7 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
               </Link>
             ) : (
               <Link
-                className={`btn th-bg badge`}
+                className={`btn th-bg badge p-2`}
                 to={{
                   pathname: `/vendors/${storeName}`,
                   state: { userId: user.user }
@@ -265,6 +263,12 @@ const PlannerItem = ({ user, pathname, t, imageValues }) => {
         style={customStyles}
         overlayClassName="react-modal-overlay"
       >
+        <div className="modal-header" style={{ padding: "5px", background: "white" }}>
+          <button type="button" className="close" onClick={() => setIsOpen(false)}>
+            <span aria-hidden="true">&times;</span>
+            <span className="sr-only">Close</span>
+          </button>
+        </div>
         <ImageGallery
           items={items}
           showBullets={true}

@@ -105,7 +105,7 @@ class Search extends Component {
             className="row"
             style={{ display: "flex", justifyContent: "stretch" }}
           >
-            <div className="col-md-5">
+            <div className="col-md-5 col-sm-5">
               <div className="form-group">
                 {/* <span className="fa fa-search form-control-feedback" /> */}
                 <input
@@ -118,7 +118,7 @@ class Search extends Component {
                 />
               </div>
             </div>
-            <div className="form-group has-search col-md-3">
+            <div className="form-group has-search col-md-3 col-sm-3">
               <SelectListGroup
                 name="filterBy"
                 value={this.state.filtereBy}
@@ -126,7 +126,7 @@ class Search extends Component {
                 options={searchOptions}
               />
             </div>
-            <div className="col-md-2">
+            <div className="col-md-2 col-sm-2">
               <GreenButton type="submit" label="Search" />
             </div>
           </div>

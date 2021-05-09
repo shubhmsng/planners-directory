@@ -1260,7 +1260,7 @@ class Planners extends Component {
       <section className="admin-section d-flex justify-content-center">
         <div className="container">
           <div className="row">
-            <div className="col-md-2">
+            <div className="col-md-2" style={{marginBottom: "30px"}}>
               <Filters
                 country={country}
                 acountry={acountry}

@@ -86,7 +86,7 @@ class SingleItem extends Component {
 
     return (
       <div className="package-thumb-wrap ">
-        <div className="package-thumb-header row">
+        <div className="package-thumb-header row mb-3">
           <div className="col">
             <h6>
               <strong>{storeName}</strong>
@@ -104,7 +104,7 @@ class SingleItem extends Component {
             <div className="small-btn-wrap text-right">
               {categories
                 ? categories.map((category, key) => (
-                    <button type="submit" className="badge">
+                    <button type="submit" key={key} className="badge">
                       {category.label}
                     </button>
                   ))
@@ -116,7 +116,7 @@ class SingleItem extends Component {
           <div className="col-md-6">
             <div className="package-thumb-caption">
               <h5>{t.description}</h5>
-              <p>{description ? description : null}</p>
+              <p style={{overflowWrap: "anywhere"}}>{description ? description : null}</p>
             </div>
             {this.props.userType === "planner" ? (
               <div className="post-meta">
@@ -125,7 +125,7 @@ class SingleItem extends Component {
                   {eventTypes
                     ? eventTypes.map((eventType, key) => (
                         <li>
-                          <a>{eventType.label}</a>
+                          <a key={key}>{eventType.label}</a>
                         </li>
                       ))
                     : null}
@@ -189,7 +189,7 @@ class SingleItem extends Component {
                 </div>
               </div> */}
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 mb-3">
               <div className="text-right">
                 <ul className="contact-list social-list">
                   {website ? (

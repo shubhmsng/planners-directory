@@ -36,7 +36,7 @@ const ImageUpload = ({
 
         <label
           id={id + "ilabel"}
-          className="custom-file-label"
+          className="custom-file-label text-left"
           for="validatedCustomFile"
         >
           Choose file...
