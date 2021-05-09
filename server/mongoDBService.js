@@ -11,9 +11,10 @@ const client = new MongoClient(MongoURL, {
     useUnifiedTopology: true,
 });
 
+client.connect();
+
 module.exports.getAdminData = async () => {
     let data = {};
-    await client.connect();
     const cursor = await client.db("planners-directory").collection("admin").find({});
     await cursor.forEach(item => {
         data = item;
@@ -23,7 +24,7 @@ module.exports.getAdminData = async () => {
 
 module.exports.getUser = async (email, password, res) => {
     let data = {};
-    await client.connect();
+    
     const cursor = await client.db("planners-directory").collection("users").find({ "email": email });
     await cursor.forEach(async (item) => {
         let user = item;
@@ -54,7 +55,7 @@ module.exports.getUser = async (email, password, res) => {
 }
 
 module.exports.getProfile = async (email, res) => {
-    await client.connect();
+    
     const cursor = await client.db("planners-directory").collection("profile").find({ "user.email": email });
     await cursor.forEach((item) => {
         try{
@@ -71,7 +72,7 @@ module.exports.getProfile = async (email, res) => {
 }
 
 module.exports.getPackages = async (email, res) => {
-    await client.connect();
+    
     const profile = await client.db("planners-directory").collection("profile").find({ "user.email": email });
     await profile.forEach(async (item) => {
         const packages = await client.db("planners-directory").collection("packages").find({ "user": item.user._id });
@@ -88,7 +89,7 @@ module.exports.getPackages = async (email, res) => {
 }
 
 module.exports.getCountries = async (continent, res) => {
-    await client.connect();
+    
     continent = continent.charAt(0).toUpperCase() + continent.slice(1);
     let find = {}
     if(continent !== "All") {
@@ -103,7 +104,7 @@ module.exports.getCountries = async (continent, res) => {
 }
 
 module.exports.getContinents = async (res, isBlocked) => {
-    await client.connect();
+    
     if (isBlocked === true || isBlocked === false) {
         const continents = await client.db("planners-directory").collection("continents").find({ isBlocked });
         let data = [];
@@ -126,7 +127,7 @@ module.exports.getContinents = async (res, isBlocked) => {
 }
 
 module.exports.updateContinents = async (res, data, isBlocked) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("continents").updateOne({ continent: data.continent }, { $set: { isBlocked } });
     const continents = await client.db("planners-directory").collection("continents").find({});
     let res_data = [];
@@ -139,7 +140,7 @@ module.exports.updateContinents = async (res, data, isBlocked) => {
 }
 
 module.exports.getCountriesByStatus = async (res, isBlocked) => {
-    await client.connect();
+    
     const countries = await client.db("planners-directory").collection("countries").find({ isBlocked: isBlocked });
     let data = [];
     await countries.forEach(country => data.push(country));
@@ -151,7 +152,7 @@ module.exports.getCountriesByStatus = async (res, isBlocked) => {
 }
 
 module.exports.blockCountry = async (data, res, isBlocked) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("countries").updateOne({ sortname: data.country }, { $set: { isBlocked } });
     if (isBlocked) {
         try {
@@ -171,7 +172,7 @@ module.exports.blockCountry = async (data, res, isBlocked) => {
 }
 
 module.exports.getStates = async (code, res) => {
-    await client.connect();
+    
     let id = "";
     const cursor = await client.db("planners-directory").collection("countries").find({ "sortname": code });
     await cursor.forEach(item => {
@@ -189,7 +190,7 @@ module.exports.getStates = async (code, res) => {
 }
 
 module.exports.getCities = async (state_id, res) => {
-    await client.connect();
+    
     const cities = await client.db("planners-directory").collection("cities").find({ "state_id": state_id });
     let data = [];
     await cities.forEach(city => data.push(city));
@@ -202,7 +203,7 @@ module.exports.getCities = async (state_id, res) => {
 }
 
 module.exports.registerUser = async (data, res) => {
-    await client.connect();
+    
 
     let password = data.password;
     if (data.password !== data.password2) {
@@ -256,7 +257,7 @@ module.exports.registerUser = async (data, res) => {
 }
 
 module.exports.registerPlanner = async (data, email, res) => {
-    await client.connect();
+    
     if (!data.city || !data.firstName || !data.lastName || !data.phoneNo1 || !data.streetAdress1) {
         res.status(400).send({ "firstName": "First Name is Required", "lastName": "Last Name is Required", "phoneno1": "Phone is Required", "streetAdress1": "Street Adress 1 is Required", "city": "City is Required" }).end();
         return;
@@ -309,7 +310,7 @@ module.exports.registerPlanner = async (data, email, res) => {
 }
 
 module.exports.updateProfile = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email })
     let profile = {};
     await profiles.forEach(item => profile = item);
@@ -333,7 +334,7 @@ module.exports.updateProfile = async (data, email, res) => {
 }
 
 module.exports.getNoticeBoard = async (res) => {
-    await client.connect();
+    
     const noticeboard = await client.db("planners-directory").collection("noticeboard").find({});
     let data = [];
     await noticeboard.forEach(item => data.push(item));
@@ -346,7 +347,7 @@ module.exports.getNoticeBoard = async (res) => {
 }
 
 module.exports.addPackages = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email });
     await profiles.forEach(async profile => {
         data.user = profile.user._id;
@@ -408,7 +409,7 @@ module.exports.addPackages = async (data, email, res) => {
 }
 
 module.exports.addImages = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email });
     await profiles.forEach(profile => {
         profile.images = { ...profile.images, ...data };
@@ -431,7 +432,7 @@ module.exports.addImages = async (data, email, res) => {
 }
 
 module.exports.updateKeywords = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email });
     await profiles.forEach(profile => {
         profile.keywords = data.tags;
@@ -455,7 +456,7 @@ module.exports.updateKeywords = async (data, email, res) => {
 }
 
 module.exports.updateOffice = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email });
     if (Number(data.st)) {
         const states = await client.db("planners-directory").collection("states").find({ "id": data.st });
@@ -513,7 +514,7 @@ module.exports.updateOffice = async (data, email, res) => {
 }
 
 module.exports.resetPassword = async (data, email, res) => {
-    await client.connect();
+    
 
     let password = data.newPass;
     if (password !== data.newPass2) {
@@ -569,7 +570,7 @@ module.exports.resetPassword = async (data, email, res) => {
 }
 
 module.exports.addServices = async (data, email, res) => {
-    await client.connect();
+    
     const profiles = await client.db("planners-directory").collection("profile").find({ "email": email });
     await profiles.forEach(async profile => {
         data.user = profile.user._id;
@@ -634,7 +635,7 @@ module.exports.addServices = async (data, email, res) => {
 }
 
 module.exports.getServices = async (email, res) => {
-    await client.connect();
+    
     const profile = await client.db("planners-directory").collection("profile").find({ "user.email": email });
     await profile.forEach(async (item) => {
         const services = await client.db("planners-directory").collection("services").find({ "user": item.user._id });
@@ -655,7 +656,7 @@ module.exports.getServices = async (email, res) => {
 }
 
 module.exports.addNoticeBoard = async (data, res) => {
-    await client.connect();
+    
     data.date = new Date().toISOString()
     data.description = data.desc;
     delete data["desc"];
@@ -669,13 +670,13 @@ module.exports.addNoticeBoard = async (data, res) => {
 }
 
 module.exports.updateAdminPackages = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $set: { packages: { ...data } } });
     res.send({ message: "Succcessfully Updated Packages" });
 }
 
 module.exports.addCategories = async (data, res) => {
-    await client.connect();
+    
 
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $push: { categories: { _id: ObjectId(), label: data.category } } });
     const adminData = client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
@@ -689,7 +690,7 @@ module.exports.addCategories = async (data, res) => {
 }
 
 module.exports.removeCategories = async (data, res) => {
-    await client.connect();
+    
     const _id = ObjectId(data.id);
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $pull: { categories: { _id } } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
@@ -703,7 +704,7 @@ module.exports.removeCategories = async (data, res) => {
 }
 
 module.exports.addEventType = async (data, res) => {
-    await client.connect();
+    
 
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $push: { eventTypes: { _id: ObjectId(), label: data.eventType } } });
     const adminData = client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
@@ -718,7 +719,7 @@ module.exports.addEventType = async (data, res) => {
 }
 
 module.exports.removeEventType = async (data, res) => {
-    await client.connect();
+    
     const _id = ObjectId(data.id);
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $pull: { eventTypes: { _id } } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
@@ -732,7 +733,7 @@ module.exports.removeEventType = async (data, res) => {
 }
 
 module.exports.addCatering = async (data, res) => {
-    await client.connect();
+    
 
     add_catering = {};
     add_catering.label = data.label;
@@ -751,7 +752,7 @@ module.exports.addCatering = async (data, res) => {
 }
 
 module.exports.removeCatering = async (data, res) => {
-    await client.connect();
+    
     const _id = ObjectId(data.id);
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $pull: { catering: { _id } } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
@@ -765,7 +766,7 @@ module.exports.removeCatering = async (data, res) => {
 }
 
 module.exports.updateAboutUs = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $set: { aboutUs: data.content } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
     adminData.forEach(item => {
@@ -779,7 +780,7 @@ module.exports.updateAboutUs = async (data, res) => {
 }
 
 module.exports.updateTnC = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $set: { terms: data.content } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
     adminData.forEach(item => {
@@ -793,7 +794,7 @@ module.exports.updateTnC = async (data, res) => {
 }
 
 module.exports.updatePP = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $set: { pp: data.content } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
     adminData.forEach(item => {
@@ -806,7 +807,7 @@ module.exports.updatePP = async (data, res) => {
 }
 
 module.exports.updateWebsiteBg = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("admin").updateOne({ _id: "5cecf2ad4b3d503a2ccb7d40" }, { $set: { ...data } });
     const adminData = await client.db("planners-directory").collection("admin").find({ _id: "5cecf2ad4b3d503a2ccb7d40" });
     adminData.forEach(item => {
@@ -820,7 +821,7 @@ module.exports.updateWebsiteBg = async (data, res) => {
 }
 
 module.exports.totalUsers = async (res) => {
-    await client.connect();
+    
     const users = await client.db("planners-directory").collection("users").find({});
     users.count((e, t) => {
         try {
@@ -832,7 +833,7 @@ module.exports.totalUsers = async (res) => {
 }
 
 module.exports.totalPlanners = async (res) => {
-    await client.connect();
+    
     const users = await client.db("planners-directory").collection("users").find({ userRole: "planner" });
     users.count((e, t) => {
         try {
@@ -844,7 +845,7 @@ module.exports.totalPlanners = async (res) => {
 }
 
 module.exports.totalBlockedPlanners = async (res) => {
-    await client.connect();
+    
     const users = await client.db("planners-directory").collection("users").find({ userRole: "planner", liveProfile: false });
     users.count((e, t) => {
         try {
@@ -856,7 +857,7 @@ module.exports.totalBlockedPlanners = async (res) => {
 }
 
 module.exports.totalBlockedVendors = async (res) => {
-    await client.connect();
+    
     const users = await client.db("planners-directory").collection("users").find({ userRole: "vendor", liveProfile: false });
     users.count((e, t) => {
         try {
@@ -868,7 +869,7 @@ module.exports.totalBlockedVendors = async (res) => {
 }
 
 module.exports.findUsers = async (data, res) => {
-    await client.connect();
+    
     const query = new RegExp(data.searchQuery);
     if (data.filterBy === "both") {
         const profiles = await client.db("planners-directory").collection("profile").find({ "user.storeName": { $regex: query } });
@@ -889,13 +890,13 @@ module.exports.findUsers = async (data, res) => {
 }
 
 module.exports.updateMarketType = async (data, res) => {
-    await client.connect();
+    
     await client.db("planners-directory").collection("profile").updateOne({ _id: ObjectId(data.id) }, { $set: { targetMarket: data.targetMarket } });
     res.send({ "message": "Successfully Updated Target Market" });
 }
 
 module.exports.blockProfile = async (data, block, res) => {
-    await client.connect();
+    
     const profile_cur = await client.db("planners-directory").collection("profile").find({ _id: ObjectId(data.id) });
     await profile_cur.forEach(profile => {
         client.db("planners-directory").collection("users").updateOne({ _id: ObjectId(profile.user._id) }, { $set: { liveProfile: block } });
@@ -910,7 +911,7 @@ module.exports.blockProfile = async (data, block, res) => {
 }
 
 module.exports.deleteProfile = async (data, res) => {
-    await client.connect();
+    
 
     client.db("planners-directory").collection("users").deleteOne({ _id: ObjectId(data.id) });
     if (data.role == "planner") {
@@ -924,16 +925,45 @@ module.exports.deleteProfile = async (data, res) => {
 }
 
 module.exports.getPlanners = async(req, res) => {
+    
+
     const pageNo = parseInt(req.query.pageNo);
-    await client.connect();
-    const count = await client.db("planners-directory").collection("profile").countDocuments({"user.userRole": "planner"});
+    const query = req.query.query;
+    const storeName = query ? new RegExp(query.toLocaleLowerCase()) : new RegExp(".");
+    const co = req.query.co;
+    const country = co ? new RegExp(co) : new RegExp(".");
+    const st = req.query.st ? new RegExp(req.query.st) : new RegExp(".");
+    const ct = req.query.ct;
+    const city = ct ? new RegExp(ct) : new RegExp(".");
+    
+    let states_data = st;
+    
+    const states = await client.db("planners-directory").collection("states").find({ "id": req.query.st });
+    await states.forEach(state => states_data = state.name);
+
+    let condition = {"user.userRole": "planner"};
+    condition["storeName"] = storeName;
+    condition["country"] = country;
+    condition["st"] = states_data;
+    condition["city"] = city;
+    if(req.query.cat) {
+        condition["categories"] = {$all: [{ label: req.query.cat, value: req.query.cat}]};
+    }
+    if(req.query.tm) {
+        condition["targetMarket"] = new RegExp(req.query.tm);        
+    }
+    if(req.query.et) {
+        condition["eventTypes"] = {$all: [{ label: req.query.et, value: req.query.et}]};
+    }
+
+    const count = await client.db("planners-directory").collection("profile").countDocuments(condition);
     const limit = 20;
     let pager = { }
     let next = { limit }
     let prev = { limit }
     let results = { }
     if(pageNo) {
-        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "planner"}).skip((pageNo - 1) * limit).limit(limit);
+        const profiles = await client.db("planners-directory").collection("profile").find(condition).skip((pageNo - 1) * limit).limit(limit);
         let data = [];
         await profiles.forEach(profile => data.push(profile));
         profiles.count((e, t) => {
@@ -964,7 +994,7 @@ module.exports.getPlanners = async(req, res) => {
             }
         })
     } else {
-        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "planner"}).limit(limit);
+        const profiles = await client.db("planners-directory").collection("profile").find(condition).limit(limit);
         let data = [];
         await profiles.forEach(profile => data.push(profile));
         profiles.count((e, t) => {
@@ -997,15 +1027,41 @@ module.exports.getPlanners = async(req, res) => {
 
 module.exports.vendors = async(req, res) => {
     const pageNo = parseInt(req.query.pageNo);
-    await client.connect();
-    const count = await client.db("planners-directory").collection("profile").countDocuments({"user.userRole": "vendor"});
+    
+
+    const query = req.query.query;
+    const storeName = query ? new RegExp(query.toLocaleLowerCase()) : new RegExp(".");
+    const co = req.query.co;
+    const country = co ? new RegExp(co) : new RegExp(".");
+    const st = req.query.st ? new RegExp(req.query.st) : new RegExp(".");
+    const ct = req.query.ct;
+    const city = ct ? new RegExp(ct) : new RegExp(".");
+    
+    let states_data = st;
+    
+    const states = await client.db("planners-directory").collection("states").find({ "id": req.query.st });
+    await states.forEach(state => states_data = state.name);
+
+    let condition = {"user.userRole": "vendor"};
+    condition["storeName"] = storeName;
+    condition["country"] = country;
+    condition["st"] = states_data;
+    condition["city"] = city;
+    if(req.query.cat) {
+        condition["categories"] = {$all: [{ label: req.query.cat, value: req.query.cat}]};
+    }
+    if(req.query.tm) {
+        condition["targetMarket"] = new RegExp(req.query.tm);        
+    }
+
+    const count = await client.db("planners-directory").collection("profile").countDocuments(condition);
     const limit = 20
     let pager = { }
     let next = { limit }
     let prev = { limit }
     let results = { }
     if(pageNo) {
-        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "vendor"}).skip((pageNo - 1) * limit).limit(limit);
+        const profiles = await client.db("planners-directory").collection("profile").find(condition).skip((pageNo - 1) * limit).limit(limit);
         let data = [];
         await profiles.forEach(profile => data.push(profile));
         profiles.count((e, t) => {
@@ -1036,7 +1092,7 @@ module.exports.vendors = async(req, res) => {
             }
         })
     } else {
-        const profiles = await client.db("planners-directory").collection("profile").find({"user.userRole": "vendor"}).limit(limit);
+        const profiles = await client.db("planners-directory").collection("profile").find(condition).limit(limit);
         let data = [];
         await profiles.forEach(profile => data.push(profile));
         profiles.count((e, t) => {
@@ -1068,7 +1124,7 @@ module.exports.vendors = async(req, res) => {
 }
 
 module.exports.getPlannerPackage = async (req, res) => {
-    await client.connect();
+    
     const profile_cur = await client.db("planners-directory").collection("profile").find({ storeName: req.params.storeName });
     let data = {};
     await profile_cur.forEach(profile => data = profile);
@@ -1078,7 +1134,7 @@ module.exports.getPlannerPackage = async (req, res) => {
 }
 
 module.exports.getPlannerPackageData = async (req, res) => {
-    await client.connect();
+    
     const package_cur = await client.db("planners-directory").collection("packages").find({ user: ObjectId(req.params.id) });
     let data = {};
     await package_cur.forEach(package => data = package);
@@ -1088,7 +1144,7 @@ module.exports.getPlannerPackageData = async (req, res) => {
 }
 
 module.exports.getVendorPackage = async (req, res) => {
-    await client.connect();
+    
     const profile_cur = await client.db("planners-directory").collection("profile").find({ storeName: req.params.storeName });
     let data = {};
     await profile_cur.forEach(profile => data = profile);
@@ -1098,7 +1154,7 @@ module.exports.getVendorPackage = async (req, res) => {
 }
 
 module.exports.getVendorPackageData = async (req, res) => {
-    await client.connect();
+    
     const package_cur = await client.db("planners-directory").collection("services").find({ user: ObjectId(req.params.id) });
     let data = {};
     await package_cur.forEach(package => data = package);

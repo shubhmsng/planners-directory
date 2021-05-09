@@ -37,10 +37,14 @@ export const getVendors = (searchQuery) => (dispatch) => {
   if (!isEmpty(searchQuery)) url = url.concat(searchQuery.url);
   axios
     .get(url)
-    .then((vendors) =>
-      dispatch({ type: GET_VENDOR_RESULTS, payload: vendors.data })
+    .then((vendors) => {
+        dispatch(setLoadingFalse())
+        if(vendors.data.results && vendors.data.results.length)
+          dispatch({ type: GET_VENDOR_RESULTS, payload: vendors.data })
+        else
+          dispatch({ type: NO_RESULTS_FOUND, payload: vendors.data })
+      }
     )
-    .then(() => dispatch(setLoadingFalse()))
     .catch((message) =>
       dispatch({ type: NO_RESULTS_FOUND, payload: message.data })
     );
