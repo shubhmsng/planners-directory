@@ -246,7 +246,7 @@ class Office extends Component {
   };
 
   onChange = (e) => {
-    // console.log("targeted value is",e.target.value)
+    // console.info()
     this.setState({
       officeData: {
         ...this.state.officeData,
@@ -287,7 +287,7 @@ class Office extends Component {
   };
 
   getCountriesbyContint = (e) => {
-    console.log("get countrie", e.target.value);
+    console.info();
     e.preventDefault();
     this.setState({
       officeData: { ...this.state.officeData, continent: e.target.value },
@@ -352,7 +352,7 @@ class Office extends Component {
     this.setState({
       officeData: { ...this.state.officeData, country: countryCode },
     });
-    console.log(label);
+    console.info();
 
     this.props.getStatesOptions(label);
   };
@@ -495,7 +495,7 @@ class Office extends Component {
   };
 
   onClickRemoveBtn = (e) => {
-    console.log("I am hit in onClickRemoveBtn");
+    console.info();
     const { id } = e.target;
     if (id === "first_form") {
       this.setState({
@@ -586,7 +586,7 @@ class Office extends Component {
     const { type } = this.props.auth.user;
     const { t } = this.props;
 
-    console.log("office data", this.props.profile);
+    console.info();
 
     return (
       <div>

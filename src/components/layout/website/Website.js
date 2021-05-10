@@ -4,7 +4,7 @@ import Header from "./header/Header";
 import Footer from "./footer/Footer";
 
 const Website = props => {
-  console.log("Website Component Loaded");
+  console.info();
   return (
     <React.Fragment>
       <div>

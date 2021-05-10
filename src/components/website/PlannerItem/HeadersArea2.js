@@ -10,7 +10,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 const HeadersArea2 = ({ userItem, userItemOffer, userType, t }) => {
-  console.log(userItem);
+  console.info();
   const disqusShortname = "plannerdirectory"; //found in your Disqus.com dashboard
   const disqusConfig = {
     url: window.location.href, //this.props.pageUrl

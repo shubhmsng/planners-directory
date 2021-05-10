@@ -56,7 +56,7 @@ class Login extends Form {
   render() {
     const { errors, data } = this.state;
     const { t, loading } = this.props;
-    console.log(loading);
+    console.info();
     return (
       <section
         className="d-flex align-items-center flex-column justify-content-center h-100"

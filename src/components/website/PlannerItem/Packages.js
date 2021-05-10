@@ -20,7 +20,7 @@ class Packages extends Component {
     if (packages === 2) classNam = "col-md-6";
     if (packages === 3) classNam = "col-md-4";
 
-    console.log(classNam);
+    console.info();
     return classNam;
   };
 

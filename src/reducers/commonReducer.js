@@ -73,12 +73,12 @@ export default function (state = initialState, action) {
 
     case GET_RESULTS:
       // let updatedData = [];
-      // console.log("ACION PAYLOD", action.payload);
+      // console.info();
 
       // action.payload.pageOfItems.map((item) => {
       //   // const imageChecking = Object.values(item.images);
       //   // const arr = imageChecking.filter((i) => i !== "");
-      //   // console.log("IMAGE ARRAY", arr);
+      //   // console.info();
       //   if (
       //     item.storeName &&
       //     item.categories.length > 0 &&
@@ -102,8 +102,8 @@ export default function (state = initialState, action) {
       //   var textB = b.storeName;
       //   return textA < textB ? -1 : textA > textB ? 1 : 0;
       // });
-      // console.log("LENGTH", Object.values(data[0].images));
-      // console.log("DATA", data);
+      // console.info());
+      // console.info();
       // const pager = {
       //   next: action.payload.next ? action.payload.next : {},
       //   previous: action.payload.previous ? action.payload.previous : {},
@@ -118,12 +118,12 @@ export default function (state = initialState, action) {
 
     case GET_VENDOR_RESULTS:
       // let updatedData = [];
-      // console.log("ACION PAYLOD", action.payload);
+      // console.info();
 
       // action.payload.pageOfItems.map((item) => {
       //   // const imageChecking = Object.values(item.images);
       //   // const arr = imageChecking.filter((i) => i !== "");
-      //   // console.log("IMAGE ARRAY", arr);
+      //   // console.info();
       //   if (
       //     item.storeName &&
       //     item.categories.length > 0 &&
@@ -147,8 +147,8 @@ export default function (state = initialState, action) {
       //   var textB = b.storeName;
       //   return textA < textB ? -1 : textA > textB ? 1 : 0;
       // });
-      // console.log("LENGTH", Object.values(data[0].images));
-      // console.log("DATA", data);
+      // console.info());
+      // console.info();
       // const pager = {
       //   next: action.payload.next ? action.payload.next : {},
       //   previous: action.payload.previous ? action.payload.previous : {},

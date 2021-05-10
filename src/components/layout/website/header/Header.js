@@ -25,7 +25,7 @@ class Header extends Component {
   forAbout = "";
 
   onClickLink = (name) => {
-    console.log("PLANNER HIT");
+    console.info();
     this.props.resetResults();
     if (name === "/planners") {
       this.setState({ name: "active-planners" });

@@ -30,7 +30,7 @@ const ProfileView = ({
   onLogout,
   t,
 }) => {
-  console.log(categoryOptions);
+  console.info();
   return (
     <div className="tab-pane" role="tabpanel" id="services">
       <div className="row">

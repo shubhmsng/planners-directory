@@ -3,7 +3,7 @@ import classnames from "classnames";
 import { NavLink } from "react-router-dom";
 
 const SidebarLink = ({ label, comp, linkTo, onClick, disabled }) => {
-  console.log(disabled);
+  console.info();
   return (
     <li
       // className={classnames("nav-item", {

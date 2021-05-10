@@ -63,13 +63,13 @@ class Packages extends Component {
         this.assignPacakgeTitles();
         this.props.getPackages();
         this.unlisten = this.props.history.listen((location, action) => {
-            console.log("on route change");
+            console.info();
         });
     }
 
     assignPacakgeTitles = () => {
         if (this.props.profile) {
-            console.log("Profiel hit in CWRCP");
+            console.info();
             const profile = this.props.profile;
             if (profile.user.featuresCompleted) {
                 this.setState({ featuresCompleted: true });
@@ -84,14 +84,14 @@ class Packages extends Component {
                 profile.p1Title = "Diamond";
                 profile.p2Title = "Platinum";
                 profile.p3Title = "Bespoke";
-                console.log("UP hit");
+                console.info();
                 this.setState({
                     p1Title: "Diamond",
                     p2Title: "Platinum",
                     p3Title: "Bespoke"
                 });
             } else if (profile.targetMarket === "mix") {
-                console.log("Mix hit");
+                console.info();
                 this.setState({
                     p1Title: "Silver",
                     p2Title: "Bronze",
@@ -105,8 +105,8 @@ class Packages extends Component {
     // };
 
     componentWillReceiveProps = nextProps => {
-        console.log("CWRCP in Packages is Fired");
-        console.log(nextProps);
+        console.info();
+        console.info();
 
         if (nextProps.packages) {
             const packages = nextProps.packages;
@@ -185,7 +185,7 @@ class Packages extends Component {
     };
 
     handleInputChange = e => {
-        console.log(e.target.value.length);
+        console.info();
         const target = e.target;
         const value = target.type === "checkbox" ? target.checked : target.value;
         const name = target.name;

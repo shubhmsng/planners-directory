@@ -93,7 +93,7 @@ export const getCountriesByContinentOptions = (continent) => (dispatch) => {
         payload: countriesByContinentOptions,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 export const getBranch1Countries = (continent) => (dispatch) => {
@@ -113,7 +113,7 @@ export const getBranch1Countries = (continent) => (dispatch) => {
         payload: countriesByContinentOptions,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 export const getBranch2Countries = (continent) => (dispatch) => {
@@ -133,7 +133,7 @@ export const getBranch2Countries = (continent) => (dispatch) => {
         payload: countriesByContinentOptions,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 export const getBranch3Countries = (continent) => (dispatch) => {
@@ -153,7 +153,7 @@ export const getBranch3Countries = (continent) => (dispatch) => {
         payload: countriesByContinentOptions,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Getting All Countries Options of the World
@@ -176,11 +176,11 @@ export const getAllCountriesOptions = () => (dispatch) => {
 
 //Getting List of All Countries of Africa
 export const getAllAfricanCountries = () => (dispatch) => {
-  console.log("African Countries HIT");
+  console.info();
   axios
     .get("/api/location/countries/africa/all")
     .then((africanCountries) => {
-      console.log("African Countrie", africanCountries);
+      console.info();
       const allAfricanCountriesOptions = africanCountries.data.map(
         (acountry) => ({
           label: acountry.name,
@@ -196,7 +196,7 @@ export const getAllAfricanCountries = () => (dispatch) => {
         type: GET_ALL_AFRICAN_COUNTRIES_OPTIONS,
         payload: allAfricanCountriesOptions,
       });
-      console.log("Dispatch Executed");
+      console.info();
     })
 
     .catch(() =>
@@ -213,7 +213,7 @@ export const getUnBlockedAfricanCountries = () => (dispatch) => {
       africanCountries.data.forEach((country) => {
         labels.push(country.sortname);
       });
-      console.log(labels);
+      console.info();
       dispatch({
         type: GET_UNBLOCKED_AFRICAN_COUNTRIES_OPTIONS,
         payload: labels,

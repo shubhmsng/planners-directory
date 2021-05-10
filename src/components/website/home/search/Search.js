@@ -19,7 +19,7 @@ class Search extends Component {
     const { id } = e.target;
 
     const { query } = this.state;
-    console.log(query);
+    console.info();
     if (id === "planner" && query) {
       this.props.history.push(`/planners?query=${query}`);
     }

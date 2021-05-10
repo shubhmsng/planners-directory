@@ -15,7 +15,7 @@ class Form extends Component {
     // if (!error) return null;
     // const errors = {};
     // for (let item of error.details) errors[item.path[0]] = item.message;
-    // console.log(errors);
+    // console.info();
     // return errors;
   };
 
@@ -29,7 +29,7 @@ class Form extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("SUBMITING THE FORM");
+    console.info();
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
@@ -40,7 +40,7 @@ class Form extends Component {
   handleChange = ({ target: input }) => {
     const errors = { ...this.state.errors };
     if ([input.name] in this.schema) {
-      console.log("I am hit in handle change");
+      console.info();
       const errorMessage = this.validateProperty(input);
       if (errorMessage) errors[input.name] = errorMessage;
       else delete errors[input.name];

@@ -81,14 +81,14 @@ export const getCurrentProfile = () => dispatch => {
 export const addVendorProfile = profileFields => dispatch => {
   axios
     .post("/api/profile/vendor", profileFields)
-    .then(profile => console.log(profile))
+    .then(profile => console.info())
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
 export const addVendorServices = serviceFields => dispatch => {
   axios
     .post("/api/profile/vendor", serviceFields)
-    .then(profile => console.log(profile))
+    .then(profile => console.info())
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
@@ -96,7 +96,7 @@ export const addVendorServices = serviceFields => dispatch => {
 export const addKeywords = keywords => dispatch => {
   axios
     .post("/api/profile/keywords", keywords)
-    .then(keywords => console.log(keywords))
+    .then(keywords => console.info())
     .catch(err => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
@@ -142,8 +142,8 @@ export const uploadImage = image => dispatch => {
 
   httpClient
     .post("/api/image-upload", formData)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .then(res => console.info())
+    .catch(err => console.info());
 };
 
 export const resetPassword = passwordFields => dispatch => {

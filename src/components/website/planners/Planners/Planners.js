@@ -41,7 +41,7 @@ class Planners extends Component {
     let params;
     await this.props.getAllCountriesOptions();
     if (this.props.pageOfItems.length < 1) {
-      console.log("IN FUCKING CDM");
+      console.info();
       // Getting Search Query Params and Mapping it to state
       const { search } = this.props.location;
       params = queryString.parse(search) || "";
@@ -63,7 +63,7 @@ class Planners extends Component {
     });
   };
   componentWillReceiveProps = async (prevProps, prevState) => {
-    console.log("CWRCPRS HITS");
+    console.info();
     if (prevProps.location.search != this.props.location.search) {
       const {
         country,
@@ -87,7 +87,7 @@ class Planners extends Component {
       if (previousParams.co != currentParams.co) {
         if (pathname == "/planners") {
           if (currentParams.co == acountry) {
-            console.log("cwrp handle filter");
+            console.info();
             await this.setState({ acountry: previousParams.co, country: "" });
 
             if (
@@ -98,9 +98,9 @@ class Planners extends Component {
               const elementFound = await this.props.allCountriesOptions.filter(
                 (u) => u.value == previousParams.co
               );
-              // console.log(elementFound, 'element fountd',params.co,'array',this.props.allCountriesOptions);
+              // console.info();
               if (elementFound.length == 0) {
-                console.log("country element no found");
+                console.info();
                 delete currentParams.co;
                 if (currentParams.st) delete currentParams.st;
                 if (currentParams.ct) delete currentParams.ct;
@@ -116,7 +116,7 @@ class Planners extends Component {
               } else {
                 if (acountry !== previousParams.co)
                   await this.setState({ acountry: previousParams.co });
-                console.log("matched countries");
+                console.info();
                 const newHistory = queryString.stringify(previousParams);
                 currentSearch = "?" + newHistory;
                 if (pathname === "/planners") {
@@ -149,7 +149,7 @@ class Planners extends Component {
         }
         if (pathname == "/vendors") {
           if (currentParams.co == country) {
-            console.log("cwrp handle filter");
+            console.info();
             await this.setState({ country: previousParams.co, acountry: "" });
 
             if (
@@ -160,9 +160,9 @@ class Planners extends Component {
               const elementFound = await this.props.allCountriesOptions.filter(
                 (u) => u.value == previousParams.co
               );
-              // console.log(elementFound, 'element fountd',params.co,'array',this.props.allCountriesOptions);
+              // console.info();
               if (elementFound.length == 0) {
-                console.log("country element no found");
+                console.info();
                 delete currentParams.co;
                 if (currentParams.st) delete currentParams.st;
                 if (currentParams.ct) delete currentParams.ct;
@@ -178,7 +178,7 @@ class Planners extends Component {
               } else {
                 if (country !== previousParams.co)
                   await this.setState({ country: previousParams.co });
-                console.log("matched countries");
+                console.info();
                 const newHistory = queryString.stringify(previousParams);
                 currentSearch = "?" + newHistory;
                 if (pathname === "/vendors") {
@@ -212,10 +212,10 @@ class Planners extends Component {
       }
       // countries end
       if (previousParams.st != currentParams.st) {
-        // console.log('cwrp handle filter 2 states', previousParams.st,currentParams,'state',this.state.st)
+        // console.info()
 
         if (currentParams.st && !isEmpty(st) && currentParams.st == st) {
-          // console.log('cwrp handle filter 2 states', previousParams.st,currentParams)
+          // console.info()
 
           if (!previousParams.st) {
             delete currentParams.st;
@@ -266,10 +266,10 @@ class Planners extends Component {
                 this.props.getVendors({ url: currentSearch });
               }
               // this.props.history.push(url);
-              console.log(currentSearch, "current");
+              console.info();
               await this.setState({ st: "", city: "" });
             } else {
-              console.log("matched states element", elementFound);
+              console.info();
 
               const data = {
                 code: previousParams.st,
@@ -290,12 +290,6 @@ class Planners extends Component {
               } else {
                 this.props.getVendors({ url: currentSearch });
               }
-              console.log(
-                currentParams.st,
-                previousParams.st,
-                "state set",
-                this.state.st
-              );
             }
           }
 
@@ -303,7 +297,7 @@ class Planners extends Component {
         }
         //
         if (!this.state.st && previousParams.st) {
-          console.log("logic is here");
+          console.info();
           if (previousParams.co) {
             await this.props.getStatesOptions({ code: previousParams.co });
           }
@@ -326,10 +320,10 @@ class Planners extends Component {
             } else {
               this.props.getVendors({ url: currentSearch });
             }
-            console.log(currentSearch, "current");
+            console.info();
             await this.setState({ st: "", city: "" });
           } else {
-            console.log("matched states element logic in here", elementFound);
+            console.info();
 
             const data = {
               code: previousParams.st,
@@ -357,7 +351,7 @@ class Planners extends Component {
         previousParams.co
       ) {
         if (currentParams.ct && !isEmpty(city) && currentParams.ct == city) {
-          console.log(currentParams.ct, "city", previousParams.ct);
+          console.info();
 
           if (!previousParams.ct) {
             delete currentParams.ct;
@@ -380,7 +374,7 @@ class Planners extends Component {
               !isEmpty(city) &&
               currentParams.ct == city
             ) {
-              console.log(currentParams.ct, "city", previousParams.ct);
+              console.info();
 
               if (!previousParams.ct) {
                 delete currentParams.ct;
@@ -412,7 +406,7 @@ class Planners extends Component {
                   (u) => u.value == previousParams.ct
                 );
                 if (elementFound.length == 0) {
-                  console.log("not matched");
+                  console.info();
                   delete previousParams.ct;
                   const newHistory = queryString.stringify(previousParams);
                   currentSearch = "?" + newHistory;
@@ -423,10 +417,10 @@ class Planners extends Component {
                     this.props.getVendors({ url: currentSearch });
                   }
                   //   this.props.history.push(url);
-                  console.log(currentSearch, "current");
+                  console.info();
                   await this.setState({ city: "" });
                 } else {
-                  console.log("matched states element", elementFound);
+                  console.info();
 
                   const newHistory = queryString.stringify(previousParams);
                   currentSearch = "?" + newHistory;
@@ -443,7 +437,7 @@ class Planners extends Component {
                   } else {
                     this.props.getVendors({ url: currentSearch });
                   }
-                  // console.log(currentParams.st,previousParams.st,'state set',this.state.st);
+                  // console.info();
                 }
               }
 
@@ -453,7 +447,7 @@ class Planners extends Component {
           // await this.handleFilters()
         }
         if (!this.state.city && previousParams.st && previousParams.co) {
-          console.log("logic is here");
+          console.info();
           if (previousParams.st) {
             const data = {
               code: previousParams.st,
@@ -476,10 +470,10 @@ class Planners extends Component {
             }
 
             //     this.props.history.push(url);
-            console.log(currentSearch, "current");
+            console.info();
             await this.setState({ city: "" });
           } else {
-            console.log("matched states element logic in here", elementFound);
+            console.info();
 
             const newHistory = queryString.stringify(previousParams);
             currentSearch = "?" + newHistory;
@@ -504,7 +498,7 @@ class Planners extends Component {
           !isEmpty(categories) &&
           currentParams.cat == categories
         ) {
-          // console.log('cwrp handle filter 2 states', previousParams.st,currentParams)
+          // console.info()
 
           if (!previousParams.cat) {
             delete currentParams.cat;
@@ -531,7 +525,7 @@ class Planners extends Component {
         }
         //
         if (!this.state.categories && previousParams.cat) {
-          console.log("logic is here");
+          console.info();
 
           const newHistory = queryString.stringify(previousParams);
           currentSearch = "?" + newHistory;
@@ -558,7 +552,7 @@ class Planners extends Component {
           !isEmpty(targetMarket) &&
           currentParams.tm == targetMarket
         ) {
-          // console.log('cwrp handle filter 2 states', previousParams.st,currentParams)
+          // console.info()
 
           if (!previousParams.tm) {
             delete currentParams.tm;
@@ -585,7 +579,7 @@ class Planners extends Component {
         }
         //
         if (!this.state.targetMarket && previousParams.tm) {
-          console.log("logic is here");
+          console.info();
 
           const newHistory = queryString.stringify(previousParams);
           currentSearch = "?" + newHistory;
@@ -612,7 +606,7 @@ class Planners extends Component {
           !isEmpty(eventType) &&
           currentParams.et == eventType
         ) {
-          // console.log('cwrp handle filter 2 states', previousParams.st,currentParams)
+          // console.info()
 
           if (!previousParams.et) {
             delete currentParams.et;
@@ -639,7 +633,7 @@ class Planners extends Component {
         }
         //
         if (!this.state.eventType && previousParams.et) {
-          console.log("logic is here");
+          console.info();
 
           const newHistory = queryString.stringify(previousParams);
           currentSearch = "?" + newHistory;
@@ -677,9 +671,9 @@ class Planners extends Component {
     let currentParams = queryString.parse(currentSearch) || "";
     let previousParams = queryString.parse(previousSearch);
     if (prevState.acountry != this.state.acountry) {
-      console.log("cdu handle filter");
+      console.info();
     }
-    //  console.log(prevState.acountry,'prevst',this.state.acountry,'current',currentParams.co,'currentpar',previousParams.co,'prevparam','co history2')
+    //  console.info()
 
     //  if(currentParams.co == this.state.acountry){
     //    this.handleFilters();
@@ -691,7 +685,7 @@ class Planners extends Component {
     // }
 
     if (currentPath !== previousPath) {
-      console.log("in cdu condition");
+      console.info();
       const { search } = this.props.history.location;
       if (currentPath === "/planners") {
         this.props.getPlanners({ url: search });
@@ -772,7 +766,7 @@ class Planners extends Component {
     e.persist();
 
     const cityValue = e.target.value;
-    console.log(e.target.name, "eeee");
+    console.info();
     if (e.target.name == "city") {
       this.setState({ city: cityValue, filterFound: "city" }, () => {
         this.handleFilters();
@@ -812,7 +806,7 @@ class Planners extends Component {
       }
     }
     if (pathname == "/vendors") {
-      console.log("vendors state set");
+      console.info();
       this.setState(
         {
           country: countryCode,
@@ -873,7 +867,7 @@ class Planners extends Component {
   };
 
   handleFilters = async () => {
-    console.log("hhandle filters call");
+    console.info();
 
     const {
       country,
@@ -888,7 +882,7 @@ class Planners extends Component {
     const { pathname } = this.props.location;
     this.setState({ isLoading: true });
     let { search } = this.props.location;
-    console.log("search at top", search);
+    console.info();
     const temp = await this.state.filterFound;
     let url;
     let params = queryString.parse(search) || "";
@@ -900,7 +894,7 @@ class Planners extends Component {
       if (pathname == "/vendors") params.co = country;
       const newHistory = queryString.stringify(params);
       search = "?" + newHistory;
-      console.log(search, "search country hit");
+      console.info();
     }
     if (temp == "state") {
       if (params.co) {
@@ -910,7 +904,7 @@ class Planners extends Component {
 
         search = "?" + newHistory;
       } else await this.setState({ st: "" });
-      //  console.log(search,'search state hit')
+      //  console.info()
       //   url = pathname.concat(search);
       //   url = this.updateQueryStringParameter(url,'st',params.st)
     }
@@ -927,20 +921,14 @@ class Planners extends Component {
       await this.props.getAllCountriesOptions();
     }
     if (params.co && this.props.allCountriesOptions.length > 0) {
-      console.log("handle filters in co");
+      console.info();
       await this.props.getAllCountriesOptions();
       const elementFound = await this.props.allCountriesOptions.filter(
         (u) => u.value == params.co
       );
-      console.log(
-        elementFound,
-        "element fountd",
-        params.co,
-        "array",
-        this.props.allCountriesOptions
-      );
+
       if (elementFound.length == 0) {
-        console.log("country element no found in handle filters");
+        console.info();
         delete params.co;
         if (params.st) delete params.st;
         if (params.ct) delete params.ct;
@@ -955,7 +943,7 @@ class Planners extends Component {
           await this.setState({ acountry: params.co });
         if (country !== params.co && pathname == "/vendors")
           await this.setState({ country: params.co });
-        console.log("matched countries");
+        console.info();
         if (this.state.acountry && pathname == "/planners") {
           this.props.getStatesOptions({
             code: this.state.acountry,
@@ -983,7 +971,7 @@ class Planners extends Component {
       }
     }
     if (params.st && params.co && this.props.stateOptions.length > 0) {
-      console.log("handle filters in state");
+      console.info();
 
       if (pathname == "/planners") {
         await this.props.getStatesOptions({
@@ -999,9 +987,9 @@ class Planners extends Component {
       const elementFound = await this.props.stateOptions.filter(
         (u) => u.value == params.st
       );
-      // console.log(elementFound, 'element fountd',params.co,'array',this.props.allCountriesOptions);
+      // console.info();
       if (elementFound.length == 0) {
-        console.log("state element no found in handle filters");
+        console.info();
 
         if (params.st) delete params.st;
         if (params.ct) delete params.ct;
@@ -1012,7 +1000,7 @@ class Planners extends Component {
         await this.setState({ st: "" });
       } else {
         await this.setState({ st: params.st });
-        console.log("matched states");
+        console.info();
         const data = {
           code: params.st,
         };
@@ -1034,7 +1022,7 @@ class Planners extends Component {
       );
 
       if (elementFound.length == 0) {
-        console.log("country element no found");
+        console.info();
         delete params.ct;
 
         const newHistory = queryString.stringify(params);
@@ -1052,7 +1040,7 @@ class Planners extends Component {
         if (stFound && coFound) {
           this.setState({ st: params.st, city: params.ct });
         } else {
-          console.log("country element no found");
+          console.info();
 
           if (params.st) delete params.st;
           if (params.ct) delete params.ct;
@@ -1101,7 +1089,7 @@ class Planners extends Component {
     }
 
     url = pathname.concat(search);
-    console.log("URL AFTER CHANGING", url);
+    console.info();
 
     this.props.history.push(url);
 
@@ -1187,7 +1175,7 @@ class Planners extends Component {
     return imageValues;
   };
   // onNext = async()=>{
-  //   console.log('hit')
+  //   console.info()
   // }
   render() {
     const {
@@ -1220,7 +1208,7 @@ class Planners extends Component {
     const params = queryString.parse(search) || "";
     const disable = this.props.noResults;
     let s = !isEmpty(search) ? search : "";
-    console.log("S", s);
+    console.info();
 
     let tobeRendered = null;
 

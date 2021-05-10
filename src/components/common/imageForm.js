@@ -19,8 +19,8 @@ class ImageForm extends React.Component {
 
     img.onload = (x = 0, y = c, i = id) => {
       if (img.width >= 1040 && img.height >= 800) {
-        console.log("ss", y);
-        console.log("id", id);
+        console.info();
+        console.info();
 
         let label = document.getElementById(id + "label");
 

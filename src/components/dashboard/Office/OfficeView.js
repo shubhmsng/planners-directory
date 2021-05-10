@@ -68,7 +68,7 @@ const OfficeView = ({
 
   const countryName = getCountryName(code);
 
-  console.log("country options",countryOptions);
+  console.info();
 
   React.useEffect(() => {
     const e = { target: { value: officeData.continent } };

@@ -15,7 +15,7 @@ class Dashboard extends Component {
   };
   async componentDidMount() {
     if (!this.props.profileLoaded) {
-      console.log("GET CURRENT PROFILE IN DASHBOARD");
+      console.info();
       await this.props.getCurrentProfile();
     }
     if (!this.props.loadingfromAdmin) {

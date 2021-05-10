@@ -526,7 +526,7 @@ module.exports.resetPassword = async (data, email, res) => {
 
     userCur.forEach(async user => {
         await bcrypt.compare(data.oldPass, user.password, async function (err, result) {
-            console.log(data.oldPass, user.password, result, err);
+            console.info();
             if (result) {
                 await bcrypt.hash(password, saltRounds, async function (err, hash) {
                     if (err) {

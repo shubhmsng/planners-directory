@@ -236,7 +236,7 @@ export default function(state = initialState, action) {
 
     case UNBLOCK_COUNTRY:
       let countr = action.payload;
-      console.log(countr);
+      console.info();
       var oldCountries = [...state.blockedCountries];
       const updatedCountries = oldCountries.filter(
         country => country.sortname !== countr

@@ -51,7 +51,7 @@ class Services extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log("CWRCP hit");
+    console.info();
     const services = nextProps.services;
 
     if (services) {

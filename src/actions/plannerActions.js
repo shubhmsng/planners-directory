@@ -36,7 +36,7 @@ export const getPlanners = (searchQuery) => async (dispatch) => {
   if (!isEmpty(searchQuery)) url = url.concat(searchQuery.url);
   try {
     const planners = await axios.get(url);
-    console.log("PLANNERS", planners);
+    console.info();
     dispatch({ type: GET_RESULTS, payload: planners.data });
     dispatch(setLoadingFalse());
   } catch (e) {
@@ -131,7 +131,7 @@ export const addPackages = (packageFields, featureCompleted, history) => (
     axios
       .post("/api/planner/packages/new", packageFields)
       .then((packages) => {
-        console.log(packages);
+        console.info();
         dispatch({ type: GET_PACKAGES, payload: packages.data });
       })
       .then(() => dispatch(getCurrentProfile()));
@@ -182,7 +182,7 @@ export const getPlannerItemPackages = (user) => (dispatch) => {
       dispatch({ type: GET_PLANNER_ITEM_PACKAGES, payload: packages.data })
     )
     .then(() => dispatch(setLoadingFalse()))
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Adding Office
@@ -197,15 +197,15 @@ export const addPlannerOffice = (officeFields) => (dispatch) => {
       })
     )
     .then(() => dispatch(setLoadingFalse()))
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Adding Planner Images
 export const addPlannerImages = (uploaded) => (dispatch) => {
   axios
     .post("/api/planner/images", uploaded)
-    .then((res) => console.log(res.status))
-    .catch((err) => console.log(err));
+    .then((res) => console.info())
+    .catch((err) => console.info());
 };
 
 //Adding Keywords for Planner
@@ -218,7 +218,7 @@ export const addPlannerKeywords = (keywords) => (dispatch) => {
         payload: profile.data,
       })
     )
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 export const onStartFormSubmission = () => {

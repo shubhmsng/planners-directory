@@ -60,7 +60,7 @@ class Catering extends Component {
       label: this.state.data.label
     };
     if (!isEmpty(newCatering.catering) && newCatering.catering !== 0) {
-      console.log(newCatering);
+      console.info();
       this.props.addCatering(newCatering);
       this.setState({
         data: {

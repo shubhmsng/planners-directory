@@ -31,17 +31,17 @@ class Users extends Component {
   };
 
   componentDidMount() {
-    console.log("CDM CALLED CALEED");
+    console.info();
     if (!this.props.filtersLoaded) {
       this.props.getFilterOptions();
     }
 
-    console.log(this.props.location.pathname);
-    console.log(this.props.location.search);
+    console.info();
+    console.info();
 
     // if (isEmpty(this.props.pageOfItems)) {
     const { pathname } = this.props.location;
-    // console.log("Initial Call happens");
+    // console.info();
     this.handleInitialLoading(pathname);
     // }
 
@@ -82,10 +82,10 @@ class Users extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("CDM CALEED CALEED");
+    console.info();
     const { pathname, search } = this.props.location;
-    console.log("Current pathname", search);
-    console.log("Previous pathname", prevProps.location.search);
+    console.info();
+    console.info();
     if (search !== prevProps.history.location.search) {
       this.props.resetResults();
       pathname === "/planners"

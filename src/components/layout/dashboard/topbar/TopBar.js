@@ -32,7 +32,7 @@ class TopBar extends Component {
 
   render() {
     const { t, user } = this.props;
-    console.log("t is", this.state.screenSize);
+    console.info();
 
     return (
       <div className="topbar">

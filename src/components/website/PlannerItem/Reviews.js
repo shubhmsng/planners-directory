@@ -15,7 +15,7 @@ class Reviews extends Component {
   // }
 
   handleNewComment = comment => {
-    console.log(comment.text);
+    console.info();
   };
 
   render() {

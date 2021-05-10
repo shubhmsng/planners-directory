@@ -97,7 +97,7 @@ class Search extends Component {
     ];
 
     const users = this.props.searchResults;
-    // console.log(users[0].targetMarket);
+    // console.info();
     return (
       <div className="tab-pane" id="services" role="tabpanel">
         <form onSubmit={this.onSubmitForm} noValidate>

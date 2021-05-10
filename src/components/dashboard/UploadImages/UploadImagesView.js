@@ -90,7 +90,7 @@ const UploadImagesView = ({
       </div> */}
 
 
-  {/* <img src={this.state.file} onLoad={() => console.log("loaded")} />; */}
+  {/* <img src={this.state.file} onLoad={() => console.info()} />; */}
 
     </div>
   );

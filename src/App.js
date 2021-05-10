@@ -74,7 +74,7 @@ import ImageGaller from "./components/testing/imageGallery";
 import "./styles/image-gallery.css";
 class App extends Component {
   componentDidMount() {
-    console.log("CDM CALLED");
+    console.info();
     if (!this.props.translatedLabels) {
       this.props.getTranslatedLabels("eng");
     }
@@ -84,7 +84,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.lang);
+    console.info();
     return (
       <Router>
         <React.Fragment>

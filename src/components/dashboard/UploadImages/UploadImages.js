@@ -48,7 +48,7 @@ class UploadImages extends ImageForm {
 
   componentWillReceiveProps(nextProps) {
     const imgs = nextProps.profile.images;
-    console.log(imgs.image1);
+    console.info();
     if (!isEmpty(imgs)) {
       imgs.image1 = !isEmpty(imgs.image1) ? imgs.image1 : "";
       imgs.image2 = !isEmpty(imgs.image2) ? imgs.image2 : "";
@@ -108,7 +108,7 @@ class UploadImages extends ImageForm {
       return <Spinner />;
     }
 
-    // console.log(this.state.data.selectedFile.imgSrc);
+    // console.info();
 
     return (
       <div>

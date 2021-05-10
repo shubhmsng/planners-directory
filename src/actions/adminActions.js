@@ -56,14 +56,14 @@ export const getAdminData = () => dispatch => {
       // data.terms = Object.keys(res.data).length > 0 ? res.data.terms.replace(/\\"/g, '"') : "";
       // //data.pp = Object.keys(res.data).length > 0 ? res.data.pp.replace(/\\"/g, '"') : "";
       
-      // console.log(data.pp);
+      // console.info();
       dispatch({ type: GET_ADMIN_DATA, payload: data });
       dispatch(getCateringOptions(res.data.catering));
       dispatch(getCategoriesOptions(res.data.categories));
       dispatch(getEventTypeOptions(res.data.eventTypes));
     })
     .then(() => dispatch(adminDataLoaded()))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const getAdminDataOnSuccess = data => dispatch => {
@@ -95,36 +95,36 @@ export const getAdminPackages = () => dispatch => {
     .then(res =>
       dispatch({ type: GET_ADMIN_PACKAGES, payload: res.data.packages })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const addCategory = newCategory => dispatch => {
   axios
     .post("/api/admin/category", newCategory)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const addBgImages = uploaded => dispatch => {
-  console.log(uploaded);
+  console.info();
   axios
     .post("/api/admin/bg-images", uploaded)
-    .then(res => console.log(res.status))
-    .catch(err => console.log(err));
+    .then(res => console.info())
+    .catch(err => console.info());
 };
 
 export const getUsers = () => dispatch => {
   axios
     .get("/api/users")
     .then(res => dispatch({ type: GET_USERS, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const addEventTypes = eventType => dispatch => {
   axios
     .post("/api/admin/event-types", eventType)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const getAllCountries = () => dispatch => {
@@ -138,7 +138,7 @@ export const addAdminPackages = updatedPackages => dispatch => {
   axios
     .post("/api/admin/packages", updatedPackages)
     .then()
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const setProfilesLoading = () => {
@@ -160,7 +160,7 @@ export const blockContinent = continent => dispatch => {
   dispatch({ type: BLOCK_UNBLOCK_CONTINENT, payload: continent.continent });
   axios
     .post("/api/location/continents/block", continent)
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Make a post request to unblock a specific continent
@@ -168,7 +168,7 @@ export const unBlockContinent = continent => dispatch => {
   dispatch({ type: BLOCK_UNBLOCK_CONTINENT, payload: continent.continent });
   axios
     .post("/api/location/continents/unblock", continent)
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Making a post request to search planners and vendors by Admin
@@ -176,7 +176,7 @@ export const searchByAdmin = searchCriteria => dispatch => {
   axios
     .post("/api/admin/search", searchCriteria)
     .then(res => dispatch({ type: SEARCH_BY_ADMIN, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Deleting a User (Planner or Vendor) by Admin
@@ -184,8 +184,8 @@ export const deleteUser = user => dispatch => {
   dispatch({ type: DELETE_USER, payload: user.id });
   axios
     .post("/api/admin/users/delete", user)
-    .then(console.log("Deleted"))
-    .catch(err => console.log(err));
+    .then(console.info())
+    .catch(err => console.info());
 };
 
 //Block a specific User by Admin
@@ -194,7 +194,7 @@ export const blockUser = user => dispatch => {
   axios
     .post("/api/admin/users/block", user)
     .then()
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Block a specific User by Admin
@@ -203,15 +203,15 @@ export const unBlockUser = user => dispatch => {
   axios
     .post("/api/admin/users/unblock", user)
     .then()
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const addCatering = catering => dispatch => {
-  console.log("I am hit");
+  console.info();
   axios
     .post("/api/admin/catering", catering)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Deleting a Specific Catering Capacity
@@ -219,7 +219,7 @@ export const deleteCatering = catering => dispatch => {
   axios
     .post("/api/admin/catering/delete", catering)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Deleting a Specific Category
@@ -227,7 +227,7 @@ export const deleteCategory = category => dispatch => {
   axios
     .post("/api/admin/category/delete", category)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err.message));
+    .catch(err => console.info());
 };
 
 //Deleting a Specific Event Type
@@ -235,7 +235,7 @@ export const deleteEventTypes = eventType => dispatch => {
   axios
     .post("/api/admin/event-types/delete", eventType)
     .then(admin => dispatch({ type: GET_ADMIN_DATA, payload: admin.data }))
-    .catch(err => console.log(err.message));
+    .catch(err => console.info());
 };
 
 //Getting Count of users
@@ -243,7 +243,7 @@ export const getUserCount = () => dispatch => {
   axios
     .get("/api/admin/stats/total")
     .then(res => dispatch({ type: GET_USER_STATS, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Planner's Count
@@ -251,7 +251,7 @@ export const getPlannerCount = () => dispatch => {
   axios
     .get("/api/admin/stats/planners")
     .then(res => dispatch({ type: GET_PLANNER_COUNT, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Vendor's Count
@@ -259,7 +259,7 @@ export const getVendorCount = () => dispatch => {
   axios
     .get("/api/admin/stats/vendors")
     .then(res => dispatch({ type: GET_VENDOR_COUNT, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Block Planner's Count
@@ -267,7 +267,7 @@ export const getBlockPlannerCount = () => dispatch => {
   axios
     .get("/api/admin/stats/block-planners")
     .then(res => dispatch({ type: GET_BLOCK_PLANNER_COUNT, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Block Vendor's Count
@@ -275,7 +275,7 @@ export const getBlockVendorCount = () => dispatch => {
   axios
     .get("/api/admin/stats/block-vendors")
     .then(res => dispatch({ type: GET_BLOCK_VENDOR_COUNT, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting List of African Countries
@@ -298,7 +298,7 @@ export const addAboutUs = aboutUs => dispatch => {
         payload: admin.data
       })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Adding T&C by Admin
@@ -311,7 +311,7 @@ export const addTerms = terms => dispatch => {
         payload: admin.data
       })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Adding Privacy Policy by Admin
@@ -324,7 +324,7 @@ export const addPP = pp => dispatch => {
         payload: admin.data
       })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Terms and Condition of Website
@@ -339,7 +339,7 @@ export const getBlockedCountries = () => dispatch => {
   axios
     .get("/api/location/countries/cblocked")
     .then(res => dispatch({ type: GET_BLOCKED_COUNTRIES, payload: res.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Blocking a Specific Country
@@ -347,7 +347,7 @@ export const blockCountry = country => dispatch => {
   axios
     .post("/api/location/countries/block", country)
     .then(dispatch(getBlockedCountries()))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //UnBlocking a Specific Country
@@ -356,7 +356,7 @@ export const unBlockCountry = country => dispatch => {
   axios
     .post("/api/location/countries/unblock", country)
     .then()
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Getting Admin Images
@@ -366,15 +366,15 @@ export const getAdminImages = () => dispatch => {
     .then(images =>
       dispatch({ type: GET_IMAGES_FROM_ADMIN, payload: images.data })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 // Changing Target Market
 export const changeTargetMarketByAdmin = data => dispatch => {
   axios
     .post("/api/admin/target-market", data)
-    .then(() => console.log("Success"))
-    .catch(err => console.log(err));
+    .then(() => console.info())
+    .catch(err => console.info());
 };
 
 //Getting States of a Particular Country
@@ -382,7 +382,7 @@ export const getStates = label => dispatch => {
   axios
     .post("/api/location/countries/states", label)
     .then(states => dispatch({ type: GET_STATES, payload: states.data }))
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 //Gettin Cities of a Particular State
@@ -392,7 +392,7 @@ export const getCitiesByState = label => dispatch => {
     .then(cities =>
       dispatch({ type: GET_CITIES_BY_STATE, payload: cities.data })
     )
-    .catch(err => console.log(err));
+    .catch(err => console.info());
 };
 
 export const clearLocationOptions = () => {

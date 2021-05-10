@@ -57,7 +57,7 @@ export const getVendorServices = () => (dispatch) => {
     .then((services) => {
       dispatch({ type: GET_VENDOR_SERVICES, payload: services.data });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Getting Vendor by ID
@@ -89,7 +89,7 @@ export const getVendorItemServices = (user) => (dispatch) => {
       dispatch({ type: GET_VENDOR_ITEM_SERVICES, payload: services.data })
     )
     .then(() => dispatch(setLoadingFalse()))
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Set filtered Vendors
@@ -107,7 +107,7 @@ export const registerVendor = (profile, history) => (dispatch) => {
     .then(() => history.push("/dashboard-toggler"))
 
     .catch((err) => {
-      console.log(err);
+      console.info();
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data,
@@ -160,22 +160,22 @@ export const addVendorOffice = (officeFields) => (dispatch) => {
   axios
     .post("/api/vendor/office", officeFields)
     .then((vendor) => dispatch({ type: GET_PROFILE, payload: vendor.data }))
-    .catch((err) => console.log(err));
+    .catch((err) => console.info());
 };
 
 //Adding Vendor Images
 export const addVendorImages = (uploaded) => (dispatch) => {
   axios
     .post("/api/vendor/images", uploaded)
-    .then((res) => console.log(res.status))
-    .catch((err) => console.log(err));
+    .then((res) => console.info())
+    .catch((err) => console.info());
 };
 
 //Adding Keywords for Planner and Vendor
 export const addVendorKeywords = (keywords) => (dispatch) => {
   axios
     .post("/api/vendor/keywords", keywords)
-    .then((keywords) => console.log(keywords))
+    .then((keywords) => console.info())
     .catch((err) => dispatch({ type: GET_ERRORS, payload: err.response.data }));
 };
 
@@ -183,8 +183,8 @@ export const addVendorKeywords = (keywords) => (dispatch) => {
 export const addVendorServices = (services, featureCompleted, history) => (
   dispatch
 ) => {
-  console.log(services);
-  console.log("ADD VENDOR SERVICES");
+  console.info();
+  console.info();
   if (!featureCompleted) {
     history.push("/dashboard/office");
     axios.post("/api/vendor/services/new", services).then((response) => {
@@ -208,7 +208,7 @@ export const addVendorServices = (services, featureCompleted, history) => (
         })
       )
       .then(() => dispatch(setLoadingFalse()))
-      .catch((err) => console.log(err));
+      .catch((err) => console.info());
   }
 };
 

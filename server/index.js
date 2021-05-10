@@ -34,7 +34,7 @@ const upload = multer({
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      console.log(file);
+      console.info();
       cb(null, Date.now().toString());
     }
   })
@@ -691,5 +691,5 @@ app.use('*', function (request, response) {
 
 
 app.listen(3000, () =>
-  console.log('Express server is running on localhost:3000')
+  console.info()
 );

@@ -87,7 +87,7 @@ class AboutPlanner2 extends Form {
   }
 
   doSubmit = () => {
-    console.log("I am in submit");
+    console.info();
     const aboutPlanner = {
       lang: this.props.lang,
       firstName: this.state.data.firstName,
@@ -104,7 +104,7 @@ class AboutPlanner2 extends Form {
       currentRevenue: this.state.data.currentRevenue,
       cateringCapacity: this.state.data.cateringCapacity,
     };
-    console.log(aboutPlanner);
+    console.info();
     this.props.registerPlanner(aboutPlanner, this.props.history);
   };
 
