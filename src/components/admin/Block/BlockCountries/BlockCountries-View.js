@@ -33,16 +33,16 @@ const BlockCountriesView = ({
           </EditButton>
         </div>
         <div className="col-md-12 text-center">
-          <h4 className="font-32 tabs-title">Block Countries</h4>
+          <h4 className="font-32 tabs-title mt-4">Block Countries</h4>
         </div>
         <form onSubmit={onBlock} noValidate>
           <div className="container">
             <div
-              className="row"
-              // style={{ display: "flex", justifyContent: "stretch" }}
+              className="row mb-4"
+              style={{ justifyContent: "center" }}
             >
-              <div className="col">
-                <div className="form-group" style={{ paddingLeft: "3rem" }}>
+              <div className="col-md-4 col-sm-4 col-lg-4">
+                <div className="form-group">
                   {/* <span className="fa fa-search form-control-feedback" /> */}
                   <SelectListGroup
                     name="continent"
@@ -54,7 +54,7 @@ const BlockCountriesView = ({
                 </div>
               </div>
               {data.input ? (
-                <div className="form-group has-search col-md-5">
+                <div className="form-group has-search col-md-4 col-sm-4 col-lg-4">
                   <SelectListGroup
                     name="country"
                     value={data.country}
@@ -64,7 +64,7 @@ const BlockCountriesView = ({
                 </div>
               ) : null}
               {data.blockButton ? (
-                <div className="col-md-2" style={{ paddingLeft: "40px" }}>
+                <div className="col-md-2 col-sm-2 col-lg-2 text-right">
                   <GreenButton
                     style={{ backgroundColor: "red" }}
                     onClick={onBlock}

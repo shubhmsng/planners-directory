@@ -209,7 +209,7 @@ class Register extends Component {
               >
                 {t.continue}
               </button>
-              <button type="button" className="btn ml-auto btn-link">
+              <button type="button" className="btn ml-auto btn-link" onClick={() => this.props.history.push("/")}>
                 {t.cancel}
               </button>
             </div>

@@ -152,7 +152,7 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarNav">
                   <ul className="navbar-nav">
                     <li className="nav-item active">
-                      <NavLink
+                      <a
                         // className="nav-link"
 
                         className={`nav-link planners-link ${
@@ -160,11 +160,16 @@ class Header extends Component {
                             ? "active-planners"
                             : ""
                         }`}
-                        to="/"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        onClick={() => this.onClickLink("/")}
                       >
                         {translatedLabels ? translatedLabels.home : "Home"}
                         <span className="sr-only">(current)</span>
-                      </NavLink>
+                      </a>
                     </li>
 
                     <li className="nav-item">
@@ -175,6 +180,11 @@ class Header extends Component {
                             : ""
                         }`}
                         onClick={() => this.onClickLink("/planners")}
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
                         to="/planners"
                       >
                         {translatedLabels
@@ -191,6 +201,11 @@ class Header extends Component {
                             : ""
                         }`}
                         onClick={() => this.onClickLink("/vendors")}
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
                       >
                         {translatedLabels
                           ? translatedLabels.vendors
@@ -199,20 +214,24 @@ class Header extends Component {
                     </li>
 
                     <li className="nav-item">
-                      <NavLink
+                      <a
                         // className="nav-link"
                         className={`nav-link planners-link ${
                           this.forAbout === "active-about"
                             ? "active-planners"
                             : ""
                         }`}
-                        exact
-                        to="/about-us"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                        onClick={() => this.onClickLink("/about-us")}
                       >
                         {translatedLabels
                           ? translatedLabels.aboutUs
                           : "About Us"}
-                      </NavLink>
+                      </a>
                     </li>
                   </ul>
                 </div>

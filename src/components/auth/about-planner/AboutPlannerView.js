@@ -84,6 +84,8 @@ const AboutPlannerView = ({
                     <Popup
                       trigger={<CancelButton label={t.cancel} type="button" />}
                       modal
+                      overlayStyle={{zIndex: "100001", background: 'rgba(0,0,0,0.5)'}}
+                      contentStyle={{background: "white", borderRadius: "5px", padding: "0 10px 5px 10px"}}
                     >
                       {close => <AboutPlannerPopUp close={close} />}
                     </Popup>

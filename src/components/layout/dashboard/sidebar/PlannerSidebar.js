@@ -49,7 +49,7 @@ class PlannerSidebar extends Component {
     return (
       <div disabled="true" className="left side-menu" style={ window.innerWidth < 1020 ? this.state.openSidebar  ? {zIndex: "100001", left: "0"} : {zIndex: "100001", left: "-100%"} : {zIndex: "100001", left: "0"}}>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler mt-2"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNav"

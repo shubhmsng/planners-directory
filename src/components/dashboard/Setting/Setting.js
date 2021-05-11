@@ -90,7 +90,7 @@ class Setting extends Component {
         <form onSubmit={this.onSubmit} id="settings" noValidate>
           <div classNameName="row">
             <div className="justify-content-center w-100 d-flex">
-              <div className="col-md-4">
+              <div className="col-md-8 col-sm-12 col-lg-6">
                 <div className="m-t-20">
                   <h6 className="text-muted">
                     <b>{t.oldPassword ? t.oldPassword : "Old Password"}</b>

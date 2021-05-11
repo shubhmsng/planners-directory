@@ -436,7 +436,11 @@ const ProfileView = ({
         />
 
         {!data.profileCompleted ? (
-          <Popup trigger={<CancelButton label="Cancel" type="button" />} modal>
+          <Popup trigger={<CancelButton label="Cancel" type="button" />} 
+            modal
+            overlayStyle={{zIndex: "100001", background: 'rgba(0,0,0,0.5)'}}
+            contentStyle={{background: "white", borderRadius: "5px", padding: "0 10px 5px 10px"}}
+          >
             {(close) => (
               <div className="modals">
                 {/* <a className="close" onClick={close}>

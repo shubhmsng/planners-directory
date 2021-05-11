@@ -44,7 +44,7 @@ class TopBar extends Component {
           </div>
         </div>
 
-        <nav className="navbar-custom">
+        <nav className="navbar-custom p-b-2">
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-11 col-md-11" style={{marginLeft: "50px"}}>

@@ -36,52 +36,47 @@ class UserStats extends Component {
             <h4 className="font-32 tabs-title">Registered Users</h4>
           </div>
           <div className="col-md-12 text-center">
-            <div style={{ display: "flex" }}>
-              <div className="col-md-3" />
-              <div className="col-md-3">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="col-md-8 text-center">
                 <h5 style={{ color: "green" }}>Event Planners</h5>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <h5 style={{ color: "green" }}>{plannerCount}</h5>
               </div>
             </div>
-            <div style={{ display: "flex" }}>
-              <div className="col-md-3" />
-              <div className="col-md-3">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="col-md-8 text-center">
                 <h5 style={{ color: "blue" }}>Event Vendors</h5>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <h5 style={{ color: "blue" }}>{vCount}</h5>
               </div>
             </div>
             <div className="bd-top" />
             <div style={{ display: "flex" }}>
-              <div className="col-md-3" />
-              <div className="col-md-3">
+              <div className="col-md-8 text-center">
                 <h4>Total</h4>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <h4>{uCount}</h4>
               </div>
             </div>
             <br />
-            <div style={{ display: "flex" }}>
-              <div className="col-md-3" />
-              <div className="col-md-3">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="col-md-8 text-center">
                 <h5 style={{ color: "red" }}>Blocked Planners</h5>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <h5 style={{ color: "red" }}>
                   {blockPlannerCount ? blockPlannerCount : 0}
                 </h5>
               </div>
             </div>{" "}
-            <div style={{ display: "flex" }}>
-              <div className="col-md-3" />
-              <div className="col-md-3">
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="col-md-8 text-center">
                 <h5 style={{ color: "red" }}>Blocked Vendors</h5>
               </div>
-              <div className="col-md-3">
+              <div className="col-md-4">
                 <h5 style={{ color: "red" }}>
                   {blockVendorCount ? blockVendorCount : 0}
                 </h5>

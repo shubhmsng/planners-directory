@@ -552,6 +552,12 @@ ul.pagination a.page-link:hover {
   }
 }
 
+@media screen and (max-width: 1020px) {
+  .p-b-2 {
+    padding-bottom: 15px;
+  }
+}
+
 @media screen and (max-width: 474px) and (min-width: 414px) {
   .page-content-wrapper {
     margin-top: 100px;

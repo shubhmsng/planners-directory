@@ -2964,6 +2964,7 @@ select.form-control[size] {
   }
   .navbar-custom {
     padding-left: 10px;
+    padding-bottom: 15px;
   }
   .wrapper.enlarged .footer,
   .footer {

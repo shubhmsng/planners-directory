@@ -19,7 +19,7 @@ class AdminSidebar extends Component {
       <div className="left side-menu" style={ window.innerWidth < 1020 ? this.state.openSidebar  ? {zIndex: "100001", left: "0"} : {zIndex: "100001", left: "-100%"} : {zIndex: "100001", left: "0"}}>
         <button
           type="button"
-          className="navbar-toggler"
+          className="navbar-toggler mt-2"
           onClick = {(e) => this.setState({openSidebar: !this.state.openSidebar})}
           style={{position: "fixed", left: "20px", top: "6px"}}
         >
